@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attalos VIP Transfers & Tours</title>
+    <title>Antalya VIP Transfer | Havalimanı & Otel Transferleri | Attalos VIP</title>
+    <meta name="description" content="Antalya'da güvenilir ve konforlu VIP transfer ve tur hizmetleri. Havalimanı, otel, şehirlerarası transferler ve günlük turlar için şimdi rezervasyon yapın.">
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght=400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
@@ -208,9 +209,11 @@
 
         /* Services Section */
         .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-md);
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+           gap: var(--spacing-md);
+           max-width: fit-content;
+           margin: 0 auto;      
         }
 
         .service-card {
@@ -277,7 +280,7 @@
             gap: var(--spacing-md);
             flex-wrap: wrap;
         }
-
+        
         .contact-method {
             background-color: rgba(255, 255, 255, 0.08);
             border-radius: 10px;
@@ -396,6 +399,7 @@
         .modal-content form input[type="time"],
         .modal-content form input[type="number"],
         .modal-content form input[type="text"],
+        .modal-content form select, /* Added for select element */
         .modal-content form textarea {
             width: calc(100% - 22px); /* Full width with padding/border consideration */
             padding: 10px;
@@ -409,6 +413,13 @@
             box-sizing: border-box; /* Ensures padding/border is included in width */
         }
 
+        /* Specific style for select dropdown for destination points */
+        .modal-content form select#destinationArea {
+            background-color: #fff; /* White background for visibility */
+            color: #333; /* Dark text for readability on white background */
+            border: 1px solid #ccc;
+        }
+
         /* Style for calendar and time picker icons in webkit browsers */
         .modal-content form input[type="date"]::-webkit-calendar-picker-indicator,
         .modal-content form input[type="time"]::-webkit-calendar-picker-indicator {
@@ -416,6 +427,7 @@
         }
 
         .modal-content form input:focus,
+        .modal-content form select:focus, /* Added for select element */
         .modal-content form textarea:focus {
             outline: none;
             border-color: var(--primary-color);
@@ -428,6 +440,15 @@
             padding: 12px 25px;
             font-size: 1.1rem;
         }
+
+        /* NEW: Styles for Price Display */
+        #modalServicePrice {
+            font-size: 1.8rem; /* Make it larger */
+            font-weight: 800; /* Make it bolder */
+            color: var(--primary-color); /* Use primary color for attention */
+            text-shadow: 0 0 5px rgba(253, 217, 160, 0.5); /* Subtle shadow for pop */
+        }
+
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -574,21 +595,7 @@
                         <a href="#" class="button book-service-btn" data-service-key="service4" data-lang-key="book-now-button">Book Now</a>
                     </div>
 
-                    <div class="service-card">
-                        <i class="fas fa-car service-icon"></i>
-                        <h3 data-lang-key="service5-title">Private Driver Service</h3>
-                        <p data-lang-key="service5-description">Hire a private driver for flexible travel, business meetings, or custom itineraries.</p>
-                        <a href="#" class="button book-service-btn" data-service-key="service5" data-lang-key="book-now-button">Book Now</a>
-                    </div>
-
-                    <div class="service-card">
-                        <i class="fas fa-star service-icon"></i>
-                        <h3 data-lang-key="service6-title">VIP Transfer</h3>
-                        <p data-lang-key="service6-description">Experience luxury and comfort with our premium VIP transfer services for a distinguished journey.</p>
-                        <a href="#" class="button book-service-btn" data-service-key="service6" data-lang-key="book-now-button">Book Now</a>
-                    </div>
-                </div>
-            </div>
+                 
         </section>
 
         <section id="about" class="section-padding">
@@ -628,17 +635,12 @@
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Attalos VIP Transfers & Tours. All rights reserved.</p>
-        </div>
-    </footer>
-
     <div id="bookingModal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
             <h3 data-lang-key="modal-heading">Book Your Transfer</h3>
             <p><span data-lang-key="modal-service-label">Service:</span> <strong id="modalServiceName"></strong></p>
+            <p><span data-lang-key="modal-price-label">Price:</span> <strong id="modalServicePrice"></strong></p>
 
             <form id="bookingForm">
                 <label for="bookingDate" data-lang-key="modal-date-label">Date:</label>
@@ -647,31 +649,50 @@
                 <label for="bookingTime" data-lang-key="modal-time-label">Time:</label>
                 <input type="time" id="bookingTime" required>
 
+                <div id="destinationAreaGroup" style="display: none;">
+                    <label for="destinationArea" data-lang-key="modal-destination-label">Destination Area:</label>
+                    <select id="destinationArea">
+                        <option value="default" data-lang-key="modal-select-destination" disabled selected>Select Destination</option>
+                        <option value="kemer" data-lang-key="destination-kemer">Kemer</option>
+                        <option value="antalya-center" data-lang-key="destination-antalya-center">Antalya Center</option>
+                        <option value="belek" data-lang-key="destination-belek">Belek</option>
+                        <option value="side" data-lang-key="destination-side">Side</option>
+                        <option value="alanya" data-lang-key="destination-alanya">Alanya</option>
+                    </select>
+                </div>
+
                 <label for="numAdults" data-lang-key="modal-adults-label">Number of Adults:</label>
                 <input type="number" id="numAdults" min="1" value="1" required>
 
                 <label for="numChildren" data-lang-key="modal-children-label">Number of Children:</label>
                 <input type="number" id="numChildren" min="0" value="0">
 
-                <label for="flightNumber" data-lang-key="modal-flight-label">Flight Number (e.g., PCxxxx, TKxxxx):</label>
+                <label for="flightNumber" data-lang-key="modal-flight-label">Uçuş Numarası (örn. PCxxxx, TKxxxx):</label>
                 <input type="text" id="flightNumber">
 
-                <label for="hotelName" data-lang-key="modal-hotel-label">Hotel Name / Address:</label>
+                <label for="hotelName" data-lang-key="modal-hotel-label">Otel Adı / Adresi:</label>
                 <input type="text" id="hotelName">
 
-                <label for="specialRequests" data-lang-key="modal-requests-label">Special Requests:</label>
+                <label for="specialRequests" data-lang-key="modal-requests-label">Özel İstekler:</label>
                 <textarea id="specialRequests" rows="3"></textarea>
 
-                <button type="submit" class="button" data-lang-key="modal-submit-button">Send Booking Request via WhatsApp</button>
+                <button type="submit" class="button" data-lang-key="modal-submit-button">WhatsApp Üzerinden Rezervasyon İsteği Gönder</button>
             </form>
         </div>
     </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Attalos VIP Transfers & Tours. All rights reserved.</p>
+        </div>
+    </footer>
+
 
     <script>
         // Language Translations
         const translations = {
             "en": {
-                "company-name": "Attalos VIP Transfers", // NEW
+                "company-name": "Attalos VIP Transfers",
                 "nav-services": "Services",
                 "nav-about": "About Us",
                 "nav-contact": "Contact",
@@ -689,10 +710,10 @@
                 "service3-description": "Comfortable and safe intercity transfers across Turkey for your convenience.",
                 "service4-title": "Daily Tours & Excursions",
                 "service4-description": "Discover Antalya's beauty with our curated daily tours to popular attractions and hidden gems.",
-                "service5-title": "Private Driver Service",
-                "service5-description": "Hire a private driver for flexible travel, business meetings, or custom itineraries.",
-                "service6-title": "VIP Transfer",
-                "service6-description": "Experience luxury and comfort with our premium VIP transfer services for a distinguished journey.",
+                // "service5-title": "Private Driver Service", // REMOVED PREVIOUSLY
+                // "service5-description": "Hire a private driver for flexible travel, business meetings, or custom itineraries.", // REMOVED PREVIOUSLY
+                // "service6-title": "VIP Transfer", // REMOVED PREVIOUSLY
+                // "service6-description": "Experience luxury and comfort with our premium VIP transfer services for a distinguished journey.", // REMOVED PREVIOUSLY
                 "about-heading": "About Us",
                 "about-paragraph1": "Welcome to Attalos VIP Transfers! We are a dedicated team providing high-quality, reliable, and comfortable transportation services across Antalya and surrounding regions. With years of experience, we pride ourselves on offering seamless transfers and unforgettable tour experiences for tourists and locals alike.",
                 "about-paragraph2": "Our fleet consists of modern, well-maintained vehicles, and our professional drivers are committed to ensuring your safety and satisfaction. Whether you need an airport transfer, a city-to-city ride, or a tailored daily tour, we are here to make your journey smooth and enjoyable.",
@@ -708,18 +729,27 @@
                 // Modal translations
                 "modal-heading": "Book Your Transfer",
                 "modal-service-label": "Service:",
+                "modal-price-label": "Price:",
                 "modal-date-label": "Date:",
                 "modal-time-label": "Time:",
+                "modal-destination-label": "Destination Area:",
+                "modal-select-destination": "Select Destination",
+                "destination-kemer": "Kemer",
+                "destination-antalya-center": "Antalya Center",
+                "destination-belek": "Belek",
+                "destination-side": "Side",
+                "destination-alanya": "Alanya",
                 "modal-adults-label": "Number of Adults:",
                 "modal-children-label": "Number of Children:",
-                "modal-flight-label": "Flight Number (e.g., PCxxxx, TKxxxx):",
-                "modal-hotel-label": "Hotel Name / Address",
-                "modal-requests-label": "Special Requests:",
+                "modal-flight-label": "Flight Number (e.g., PCxxxx, TKxxxx)", // NO COLON HERE, ADDED IN JS
+                "modal-hotel-label": "Hotel Name / Address", // NO COLON HERE, ADDED IN JS
+                "modal-requests-label": "Special Requests", // NO COLON HERE, ADDED IN JS
                 "modal-submit-button": "Send Booking Request via WhatsApp",
                 "not-provided": "Not provided",
+                "modal-thank-you-message": "Thank you for your request! We will get back to you shortly."
                 },
             "tr": {
-                "company-name": "Attalos VIP Transferler", // NEW
+                "company-name": "Attalos VIP Transferler",
                 "nav-services": "Hizmetler",
                 "nav-about": "Hakkımızda",
                 "nav-contact": "İletişim",
@@ -737,10 +767,10 @@
                 "service3-description": "Türkiye genelinde rahat ve güvenli şehirlerarası transferler ile seyahatlerinizde kolaylık sağlayın.",
                 "service4-title": "Günlük Turlar ve Geziler",
                 "service4-description": "Antalya'nın güzelliklerini, popüler cazibe merkezlerine ve gizli kalmış yerlere düzenlediğimiz günlük turlarla keşfedin.",
-                "service5-title": "Özel Şoför Hizmeti",
-                "service5-description": "Esnek seyahatler, iş toplantıları veya özel rotalar için özel şoför kiralayın.",
-                "service6-title": "VIP Transfer",
-                "service6-description": "Seçkin bir yolculuk için premium VIP transfer hizmetlerimizle lüks ve konforu deneyimleyin.",
+                // "service5-title": "Özel Şoför Hizmeti", // REMOVED PREVIOUSLY
+                // "service5-description": "Esnek seyahatler, iş toplantıları veya özel rotalar için özel şoför kiralayın.", // REMOVED PREVIOUSLY
+                 // "service6-title": "VIP Transfer", // REMOVED PREVIOUSLY
+                // "service6-description": "Seçkin bir yolculuk için premium VIP transfer hizmetlerimizle lüks ve konforu deneyimleyin.", // REMOVED PREVIOUSLY
                 "about-heading": "Hakkımızda",
                 "about-paragraph1": "Attalos VIP Transferler'e hoş geldiniz! Biz — Antalya ve çevre bölgelerde yüksek kaliteli, güvenilir ve konforlu ulaşım hizmetleri sunan özel bir ekibiz. Yılların verdiği deneyimle, turistler ve yerel halk için sorunsuz transferler ve unutulmaz tur deneyimleri sunmaktan gurur duyuyoruz.",
                 "about-paragraph2": "Filomuz modern, iyi bakımlı araçlardan oluşmaktadır ve profesyonel şoförlerimiz güvenliğiniz ve memnuniyetiniz için çalışmaktadır. Havaalanı transferine, şehirlerarası bir yolculuğa veya özel bir günlük tura ihtiyacınız olsun, yolculuğunuzu sorunsuz ve keyifli hale getirmek için buradayız.",
@@ -756,19 +786,27 @@
                 // Modal translations
                 "modal-heading": "Transfer Rezervasyonunuzu Yapın",
                 "modal-service-label": "Hizmet:",
+                "modal-price-label": "Fiyat:",
                 "modal-date-label": "Tarih:",
                 "modal-time-label": "Saat:",
+                "modal-destination-label": "Varış Bölgesi:",
+                "modal-select-destination": "Bölge Seçin",
+                "destination-kemer": "Kemer",
+                "destination-antalya-center": "Antalya Merkez",
+                "destination-belek": "Belek",
+                "destination-side": "Side",
+                "destination-alanya": "Alanya",
                 "modal-adults-label": "Yetişkin Sayısı:",
                 "modal-children-label": "Çocuk Sayısı:",
-                "modal-flight-label": "Uçuş Numarası (örn. PCxxxx, TKxxxx):",
-                "modal-hotel-label": "Otel Adı / Adresi:",
-                "modal-requests-label": "Özel İstekler:",
+                "modal-flight-label": "Uçuş Numarası (örn. PCxxxx, TKxxxx)", // NO COLON HERE, ADDED IN JS
+                "modal-hotel-label": "Otel Adı / Adresi", // NO COLON HERE, ADDED IN JS
+                "modal-requests-label": "Özel İstekler", // NO COLON HERE, ADDED IN JS
                 "modal-submit-button": "WhatsApp Üzerinden Rezervasyon İsteği Gönder",
                 "not-provided": "Belirtilmedi",
-                "modal-thank-you-message": "Talebiniz için teşekkür ederiz! Size en kısa sürede dönüş yapacağız." // New key
+                "modal-thank-you-message": "Talebiniz için teşekkür ederiz! Size en kısa sürede dönüş yapacağız."
             },
             "ru": {
-                "company-name": "Attalos VIP Трансферы", // NEW
+                "company-name": "Attalos VIP Трансферы",
                 "nav-services": "Услуги",
                 "nav-about": "О нас",
                 "nav-contact": "Контакты",
@@ -786,10 +824,10 @@
                 "service3-description": "Комфортные и безопасные междугородние трансферы по всей Турции для вашего удобства.",
                 "service4-title": "Ежедневные Туры и Экскурсии",
                 "service4-description": "Откройте для себя красоту Анталии с нашими тщательно подобранными ежедневными турами к популярным достопримечательностям и скрытым жемчужинам.",
-                "service5-title": "Услуги Персонального Водителя",
-                "service5-description": "Нанять личного водителя для гибких поездок, деловых встреч или индивидуальных маршрутов.",
-                "service6-title": "VIP Трансфер",
-                "service6-description": "Испытайте роскошь и комфорт с нашими премиальными услугами VIP-трансфера для выдающегося путешествия.",
+                // "service5-title": "Услуги Персонального Водителя", // REMOVED PREVIOUSLY
+                // "service5-description": "Нанять личного водителя для гибких поездок, деловых встреч или индивидуальных маршрутов.", // REMOVED PREVIOUSLY
+                            // "service6-title": "VIP Трансфер", // REMOVED PREVIOUSLY
+                // "service6-description": "Испытайте роскошь и комфорт с нашими премиальными услугами VIP-трансфера для выдающегося путешествия.", // REMOVED PREVIOUSLY
                 "about-heading": "О нас",
                 "about-paragraph1": "Добро пожаловать в Attalos VIP Трансферы! Мы — преданная команда, предоставляющая высококачественные, надежные и комфортные транспортные услуги по всей Анталии и прилегающим регионам. Обладая многолетним опытом, мы гордимся тем, что предлагаем бесперебойные трансферы и незабываемые туристические впечатления как для туристов, так и для местных жителей.",
                 "about-paragraph2": "Наш автопарк состоит из современных, хорошо обслуживаемых автомобилей, а наши профессиональные водители стремятся обеспечить вашу безопасность и удовлетворение. Нужен ли вам трансфер из аэропорта, поездка между городами или индивидуальный ежедневный тур, мы здесь, чтобы сделать ваше путешествие гладким и приятным.",
@@ -805,19 +843,27 @@
                 // Modal translations
                 "modal-heading": "Забронируйте Трансфер",
                 "modal-service-label": "Услуга:",
+                "modal-price-label": "Цена:",
                 "modal-date-label": "Дата:",
                 "modal-time-label": "Время:",
+                "modal-destination-label": "Пункт назначения:",
+                "modal-select-destination": "Выберите пункт назначения",
+                "destination-kemer": "Кемер",
+                "destination-antalya-center": "Центр Анталии",
+                "destination-belek": "Белек",
+                "destination-side": "Сиде",
+                "destination-alanya": "Алания",
                 "modal-adults-label": "Количество взрослых:",
                 "modal-children-label": "Количество детей:",
-                "modal-flight-label": "Номер рейса (например, PCxxxx, TKxxxx):",
-                "modal-hotel-label": "Название / Адрес отеля:",
-                "modal-requests-label": "Особые запросы:",
+                "modal-flight-label": "Номер рейса (например, PCxxxx, TKxxxx)", // NO COLON HERE, ADDED IN JS
+                "modal-hotel-label": "Название / Адрес отеля", // NO COLON HERE, ADDED IN JS
+                "modal-requests-label": "Особые запросы", // NO COLON HERE, ADDED IN JS
                 "modal-submit-button": "Отправить запрос на бронирование через WhatsApp",
                 "not-provided": "Не указано",
-                "modal-thank-you-message": "Спасибо за ваш запрос! Мы свяжемся с вами в ближайшее время." // New key
+                "modal-thank-you-message": "Спасибо за ваш запрос! Мы свяжемся с вами в ближайшее время."
             },
             "de": {
-                "company-name": "Attalos VIP Transfers", // NEW
+                "company-name": "Attalos VIP Transfers",
                 "nav-services": "Dienstleistungen",
                 "nav-about": "Über Uns",
                 "nav-contact": "Kontakt",
@@ -835,14 +881,14 @@
                 "service3-description": "Komfortable und sichere Intercity-Transfers in der ganzen Türkei für Ihren Komfort.",
                 "service4-title": "Tägliche Touren & Ausflüge",
                 "service4-description": "Entdecken Sie die Schönheit Antalyas mit unseren kuratierten Tagestouren zu beliebten Attraktionen und versteckten Juwelen.",
-                "service5-title": "Privatfahrer-Service",
-                "service5-description": "Mieten Sie einen Privatfahrer für flexible Reisen, Geschäftstreffen oder individuelle Reiserouten.",
-                "service6-title": "VIP Transfer",
-                "service6-description": "Erleben Sie Luxus und Komfort mit unseren Premium-VIP-Transferdiensten für eine ausgezeichnete Reise.",
+                // "service5-title": "Private Driver Service", // REMOVED PREVIOUSLY
+                // "service5-description": "Mieten Sie einen Privatfahrer für flexible Reisen, Geschäftstreffen oder individuelle Reiserouten.", // REMOVED PREVIOUSLY
+                              // "service6-title": "VIP Transfer", // REMOVED PREVIOUSLY
+                // "service6-description": "Erleben Sie Luxus und Komfort mit unseren Premium-VIP-Transferdiensten für eine ausgezeichnete Reise.", // REMOVED PREVIOUSLY
                 "about-heading": "Über Uns",
-                "about-paragraph1": "Willkommen bei Attalos VIP Transfers! Wir sind ein engagiertes Team, das hochwertige, zuverlässige und komfortable Transportdienstleistungen in Antalya und den umliegenden Regionen anbietet. Mit jahrelanger Erfahrung sind wir stolz darauf, nahtlose Transfers und unvergessliche Tourerlebnisse für Touristen und Einheimische gleichermaßen anzubieten.",
+                "about-paragraph1": "Willkommen bei Attalos VIP Transfers! Wir sind ein engagiertes Team, das hochwertige, zuverlässige und komfortable Transportdienstleistungen in Antalya und den umliegenden Regionen anbietet. Mit jahrelanger Erfahrung, sind wir stolz darauf, nahtlose Transfers und unvergessliche Tourerlebnisse für Touristen und Einheimische gleichermaßen anzubieten.",
                 "about-paragraph2": "Unser Fuhrpark besteht aus modernen, gut gewarteten Fahrzeugen, und unsere professionellen Fahrer sind bestrebt, Ihre Sicherheit und Zufriedenheit zu gewährleisten. Egal, ob Sie einen Flughafentransfer, eine Stadt-zu-Stadt-Fahrt oder eine maßgeschneiderte Tagestour benötigen, wir sind hier, um Ihre Reise reibungslos und angenehm zu gestalten.",
-                "about-paragraph3": "Kundenzufriedenheit ist unsere oberste Priorität. Wir bemühen uns, personalisierte Dienstleistungen anzubieten, die Ihren einzigartigen Bedürfnissen und Vorlieben entsprechen. Wählen Sie uns für ein stressfreies Reiseerlebnis in der Türkei!",
+                "about-paragraph3": "Kundenzufriedenheit ist unsere oberste Priorität. Wir bemühen uns, personalisierte Dienstleistungen anzubieten, die Ihren einzigartigen Bedürfnissen und Präferenzen entsprechen. Wählen Sie uns für ein stressfreies Reiseerlebnis in der Türkei!",
                 "contact-heading": "Kontaktieren Sie uns",
                 "contact-description": "Bereit zur Buchung oder haben Sie eine Frage? Kontaktieren Sie uns!",
                 "contact-whatsapp-title": "WhatsApp",
@@ -854,16 +900,24 @@
                 // Modal translations
                 "modal-heading": "Buchen Sie Ihren Transfer",
                 "modal-service-label": "Dienstleistung:",
+                "modal-price-label": "Preis:",
                 "modal-date-label": "Datum:",
                 "modal-time-label": "Uhrzeit:",
+                "modal-destination-label": "Zielgebiet:",
+                "modal-select-destination": "Ziel wählen",
+                "destination-kemer": "Kemer",
+                "destination-antalya-center": "Antalya Zentrum",
+                "destination-belek": "Belek",
+                "destination-side": "Side",
+                "destination-alanya": "Alanya",
                 "modal-adults-label": "Anzahl der Erwachsenen:",
                 "modal-children-label": "Anzahl der Kinder:",
-                "modal-flight-label": "Flugnummer (z.B. PCxxxx, TKxxxx):",
-                "modal-hotel-label": "Hotelname / Adresse:",
-                "modal-requests-label": "Besondere Wünsche:",
+                "modal-flight-label": "Flugnummer (z.B. PCxxxx, TKxxxx)", // NO COLON HERE, ADDED IN JS
+                "modal-hotel-label": "Hotelname / Adresse", // NO COLON HERE, ADDED IN JS
+                "modal-requests-label": "Besondere Wünsche", // NO COLON HERE, ADDED IN JS
                 "modal-submit-button": "Buchungsanfrage per WhatsApp senden",
                 "not-provided": "Nicht angegeben",
-                "modal-thank-you-message": "Vielen Dank für Ihre Anfrage! Wir werden uns in Kürze bei Ihnen melden." // New key
+                "modal-thank-you-message": "Vielen Dank für Ihre Anfrage! Wir werden uns in Kürze bei Ihnen melden."
             }
         };
 
@@ -874,33 +928,57 @@
                 "service2": "Hotel to Antalya Airport Transfer",
                 "service3": "City to City Transfer",
                 "service4": "Daily Tour / Excursion",
-                "service5": "Private Driver Service",
-                "service6": "VIP Transfer"
+                // "service5": "Private Driver Service", // REMOVED PREVIOUSLY
+                // "service6": "VIP Transfer" // REMOVED PREVIOUSLY
             },
             "tr": {
                 "service1": "Antalya Havalimanı'ndan Otele Transfer",
                 "service2": "Otelden Antalya Havalimanı'na Transfer",
                 "service3": "Şehirlerarası Transfer",
                 "service4": "Günlük Tur / Gezi",
-                "service5": "Özel Şoför Hizmeti",
-                "service6": "VIP Transfer"
+                // "service5": "Özel Şoför Hizmeti", // REMOVED PREVIOUSLY
+                // "service6": "VIP Transfer" // REMOVED PREVIOUSLY
             },
             "ru": {
                 "service1": "Трансфер из аэропорта Анталии в отель",
                 "service2": "Трансфер из отеля в аэропорт Анталии",
                 "service3": "Межгородской трансфер",
                 "service4": "Ежедневный тур / экскурсия",
-                "service5": "Услуги личного водителя",
-                "service6": "VIP трансфер"
+                // "service5": "Услуги личного водителя", // REMOVED PREVIOUSLY
+                // "service6": "VIP трансфер" // REMOVED PREVIOUSLY
             },
             "de": {
                 "service1": "Antalya Flughafen zum Hotel Transfer",
                 "service2": "Hotel zum Antalya Flughafen Transfer",
                 "service3": "Stadt zu Stadt Transfer",
                 "service4": "Tägliche Tour / Ausflug",
-                "service5": "Privatfahrer-Service",
-                "service6": "VIP Transfer"
+                // "service5": "Private Driver Service", // REMOVED PREVIOUSLY
+                // "service6": "VIP Transfer" // REMOVED PREVIOUSLY
             }
+        };
+
+        // NEW: Service Prices - Now nested by destination for Airport Transfers
+        const servicePrices = {
+            "service1": { // Antalya Airport -> Hotel Transfers
+                "kemer": "45 EUR",
+                "antalya-center": "35 EUR",
+                "belek": "40 EUR",
+                "side": "50 EUR",
+                "alanya": "65 EUR",
+                "default": "Please select destination" // Default message if no destination selected
+            },
+            "service2": { // Hotel -> Antalya Airport Transfers (can mirror service1 prices if same)
+                "kemer": "40 EUR",
+                "antalya-center": "30 EUR",
+                "belek": "35 EUR",
+                "side": "45 EUR",
+                "alanya": "60 EUR",
+                "default": "Please select destination"
+            },
+            "service3": "Price varies by route, please inquire", // City to City
+            "service4": "50 EUR per person", // Daily Tours
+            // "service5": "300 EUR (Daily)", // REMOVED PREVIOUSLY
+            // "service6": "150 EUR"  // VIP Transfer - REMOVED PREVIOUSLY
         };
 
 
@@ -915,11 +993,14 @@
         const bookingModal = document.getElementById('bookingModal');
         const closeButton = document.querySelector('.close-button');
         const modalServiceName = document.getElementById('modalServiceName');
+        const modalServicePrice = document.getElementById('modalServicePrice');
         const bookingForm = document.getElementById('bookingForm');
 
         // Get form inputs
         const bookingDateInput = document.getElementById('bookingDate');
         const bookingTimeInput = document.getElementById('bookingTime');
+        const destinationAreaGroup = document.getElementById('destinationAreaGroup');
+        const destinationAreaSelect = document.getElementById('destinationArea');
         const numAdultsInput = document.getElementById('numAdults');
         const numChildrenInput = document.getElementById('numChildren');
         const flightNumberInput = document.getElementById('flightNumber');
@@ -934,25 +1015,19 @@
             document.querySelectorAll('[data-lang-key]').forEach(element => {
                 const key = element.getAttribute('data-lang-key');
                 if (translations[lang] && translations[lang][key]) {
-                    if (element.tagName === 'INPUT' && (element.type === 'text' || element.type === 'number')) {
-                        // For input placeholders or values if needed
-                        // Currently, inputs don't have data-lang-key for placeholder
+                    if (element.tagName === 'OPTION') { // Special handling for <option> tags
+                        element.textContent = translations[lang][key];
                     } else if (element.tagName === 'BUTTON') {
                         element.textContent = translations[lang][key];
-                    }
-                    else if (element.tagName === 'A' && element.classList.contains('book-service-btn')) {
+                    } else if (element.tagName === 'A' && element.classList.contains('book-service-btn')) {
                         element.textContent = translations[lang][key];
-                    }
-                    else {
+                    } else {
                         element.textContent = translations[lang][key];
-                        // If the element is a label that contains input, handle it carefully
-                        if (element.htmlFor) { // Check if it's a label for an input
-                            // Re-append the colon if it was part of the original label text
-                            // This assumes your original labels had colons and you want them back
-                            // And specifically exclude the submit button's label
-                            if (!element.textContent.endsWith(':') && key !== 'modal-submit-button') {
-                                element.textContent += ':';
-                            }
+                        // Add colon if it's a label and doesn't end with one, and not a button/link (handled above)
+                        if (element.htmlFor && !element.textContent.endsWith(':') &&
+                            !element.classList.contains('button') &&
+                            key !== 'modal-submit-button') { // Exclude submit button
+                            element.textContent += ':';
                         }
                     }
                 }
@@ -967,24 +1042,103 @@
             });
 
             currentLanguage = lang; // Update the global current language
+
+            // Re-render the destination options with updated translations
+            // This loop iterates through options and updates their text content using the translation keys.
+            destinationAreaSelect.querySelectorAll('option').forEach(option => {
+                const key = option.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    option.textContent = translations[lang][key];
+                }
+            });
+
+            // Update the displayed price for the current service/destination
+            updateDisplayedPrice();
         }
+
+        // Function to update the displayed price based on selected service and destination
+        function updateDisplayedPrice() {
+            const currentServiceKey = bookingForm.getAttribute('data-current-service-key');
+            let priceToDisplay = translations[currentLanguage]["not-provided"];
+
+            if (currentServiceKey) {
+                // Check if the service has nested prices (like airport transfers)
+                if (typeof servicePrices[currentServiceKey] === 'object') {
+                    const selectedDestination = destinationAreaSelect.value;
+                    priceToDisplay = servicePrices[currentServiceKey][selectedDestination] || translations[currentLanguage]["not-provided"];
+                } else {
+                    // For services with a single price
+                    priceToDisplay = servicePrices[currentServiceKey] || translations[currentLanguage]["not-provided"];
+                }
+            }
+            modalServicePrice.textContent = priceToDisplay;
+        }
+
 
         // Function to show the modal
         function showModal(serviceNameDisplay, serviceKeyForWhatsApp) {
+            // Reset modal content to original form state if it was changed
+            const formElement = document.getElementById('bookingForm');
+            formElement.style.display = 'block';
+
+            const modalContentDiv = document.querySelector('.modal-content');
+            const existingThankYouMessage = modalContentDiv.querySelector('.thank-you-message-display');
+            const existingWhatsappButton = modalContentDiv.querySelector('.whatsapp-continue-button');
+
+            if (existingThankYouMessage) {
+                modalContentDiv.removeChild(existingThankYouMessage);
+            }
+            if (existingWhatsappButton) {
+                modalContentDiv.removeChild(existingWhatsappButton);
+            }
+            modalServiceName.style.display = 'block';
+            modalServicePrice.style.display = 'block';
+
             modalServiceName.textContent = serviceNameDisplay;
             // Store serviceKey on the form for later use in submit handler
             bookingForm.setAttribute('data-current-service-key', serviceKeyForWhatsApp);
 
+            // Get flightNumber input and its label for conditional display
+            const flightNumberLabel = document.querySelector('label[for="flightNumber"]');
+            const flightNumberInput = document.getElementById('flightNumber');
+
+
+            // Show/hide destination area dropdown based on service
+            if (serviceKeyForWhatsApp === 'service1' || serviceKeyForWhatsApp === 'service2') {
+                destinationAreaGroup.style.display = 'block';
+                // Reset destination select to default "Select Destination" option
+                destinationAreaSelect.value = 'default';
+            } else {
+                destinationAreaGroup.style.display = 'none';
+            }
+
+            // NEW: Show/hide flight number field based on service
+            // Flight number is only relevant for Airport Transfers (service1 and service2)
+            if (serviceKeyForWhatsApp === 'service1' || serviceKeyForWhatsApp === 'service2') {
+                flightNumberLabel.style.display = 'block'; // Show label
+                flightNumberInput.style.display = 'block';   // Show input
+                flightNumberInput.required = false; // Keep as optional for now, but visible
+            } else {
+                flightNumberLabel.style.display = 'none'; // Hide label
+                flightNumberInput.style.display = 'none';   // Hide input
+                flightNumberInput.value = ''; // Clear value when hidden
+                flightNumberInput.required = false; // Not required when hidden
+            }
+
+
+            // Update price immediately after showing/hiding destination, and resetting select
+            updateDisplayedPrice();
+
             // Reset form fields to default values
             bookingForm.reset();
-            numAdultsInput.value = 1; // Default to 1 adult
-            numChildrenInput.value = 0; // Default to 0 children
+            numAdultsInput.value = 1;
+            numChildrenInput.value = 0;
 
             // Set minimum date for the date input to tomorrow
             const today = new Date();
             const tomorrow = new Date(today);
-            tomorrow.setDate(today.getDate() + 1); // Set to tomorrow's date
-            bookingDateInput.min = tomorrow.toISOString().split('T')[0]; // Format as YYYY-MM-DD
+            tomorrow.setDate(today.getDate() + 1);
+            bookingDateInput.min = tomorrow.toISOString().split('T')[0];
 
             // Optionally set default time to current time
             const now = new Date();
@@ -992,7 +1146,7 @@
             const minutes = String(now.getMinutes()).padStart(2, '0');
             bookingTimeInput.value = `${hours}:${minutes}`;
 
-            bookingModal.style.display = 'flex'; // Make the modal visible
+            bookingModal.style.display = 'flex';
         }
 
         // Function to hide the modal
@@ -1018,7 +1172,6 @@
 
         // Initial content load (set to English by default or detect browser language)
         document.addEventListener('DOMContentLoaded', () => {
-            // Attempt to detect browser language, otherwise default to 'en'
             const browserLang = navigator.language.split('-')[0];
             const initialLang = translations[browserLang] ? browserLang : 'en';
             updateContentForLanguage(initialLang);
@@ -1041,56 +1194,75 @@
             }
         });
 
+        // Event listener for destination area change
+        destinationAreaSelect.addEventListener('change', updateDisplayedPrice);
 
         // Modify your existing 'Book Now' button listener
         document.querySelectorAll('.book-service-btn').forEach(button => {
             button.addEventListener('click', (event) => {
-                event.preventDefault(); // Prevent default link behavior
+                event.preventDefault();
                 const serviceKey = button.getAttribute('data-service-key');
-                // Get the displayed service name from your translations object
-                const serviceNameDisplay = translations[currentLanguage][`service${serviceKey.replace('service','')}-title`]; // Correctly get title
-                showModal(serviceNameDisplay, serviceKey); // Pass name and key to the modal
+                const serviceNameDisplay = translations[currentLanguage][`service${serviceKey.replace('service','')}-title`];
+                showModal(serviceNameDisplay, serviceKey);
             });
         });
 
-        // New: Event listener for the modal's booking form submission
-        // New: Event listener for the modal's booking form submission
+        // Event listener for the modal's booking form submission
         bookingForm.addEventListener('submit', (event) => {
-            event.preventDefault(); // Stop the form from submitting normally
+            event.preventDefault();
 
             const serviceKey = bookingForm.getAttribute('data-current-service-key');
             const phoneNumber = "905518421407"; // Your WhatsApp number
 
-            // Get the full service description for the WhatsApp message
             const selectedServiceFullText = whatsappMessagesContent[currentLanguage][serviceKey] || translations[currentLanguage]["not-provided"];
+            let priceText;
+
+            // Determine price for WhatsApp message
+            if (typeof servicePrices[serviceKey] === 'object') {
+                const selectedDestination = destinationAreaSelect.value;
+                priceText = servicePrices[serviceKey][selectedDestination] || translations[currentLanguage]["not-provided"];
+            } else {
+                priceText = servicePrices[serviceKey] || translations[currentLanguage]["not-provided"];
+            }
+
 
             // Get values from the modal form
             const bookingDate = bookingDateInput.value;
             const bookingTime = bookingTimeInput.value;
+            const selectedDestinationArea = destinationAreaSelect.value !== 'default' ? destinationAreaSelect.options[destinationAreaSelect.selectedIndex].text : translations[currentLanguage]["not-provided"]; // Get text for WhatsApp
             const numAdults = numAdultsInput.value;
             const numChildren = numChildrenInput.value;
-            const flightNumber = flightNumberInput.value.trim();
+            // Only get flight number if the field is visible (i.e., relevant)
+            const flightNumber = flightNumberInput.style.display === 'block' ? flightNumberInput.value.trim() : '';
             const hotelName = hotelNameInput.value.trim();
             const specialRequests = specialRequestsInput.value.trim();
 
-            // Construct the detailed WhatsApp message - THIS IS THE PART TO CHANGE
-            let message = `Hello, I would like to book the "${selectedServiceFullText}" service.\n\n`;
-            message += "--- Booking Details ---\n";
+            // Construct the detailed WhatsApp message
+            let message = `Merhaba, "${selectedServiceFullText}" hizmetini rezerve etmek istiyorum.\n`;
+            message += `${translations[currentLanguage]["modal-price-label"].replace(':', '')}: ${priceText}\n\n`;
+            message += "--- Rezervasyon Detayları ---\n";
             message += `${translations[currentLanguage]["modal-date-label"].replace(':', '')}: ${bookingDate || translations[currentLanguage]["not-provided"]}\n`;
             message += `${translations[currentLanguage]["modal-time-label"].replace(':', '')}: ${bookingTime || translations[currentLanguage]["not-provided"]}\n`;
+
+            if (serviceKey === 'service1' || serviceKey === 'service2') { // Only add destination for airport transfers
+                message += `${translations[currentLanguage]["modal-destination-label"].replace(':', '')}: ${selectedDestinationArea}\n`;
+            }
+
             message += `${translations[currentLanguage]["modal-adults-label"].replace(':', '')}: ${numAdults}\n`;
             message += `${translations[currentLanguage]["modal-children-label"].replace(':', '')}: ${numChildren}\n`;
 
-            if (flightNumber) {
+            if (flightNumber) { // Only include flight number if it was visible and provided
                 message += `${translations[currentLanguage]["modal-flight-label"].replace(':', '')}: ${flightNumber}\n`;
-            } else {
-                message += `${translations[currentLanguage]["modal-flight-label"].replace(':', '')}: ${translations[currentLanguage]["not-provided"]} (or N/A for tours)\n`;
+            } else if (serviceKey === 'service1' || serviceKey === 'service2') { // For airport transfers, if not provided, say so
+                 message += `${translations[currentLanguage]["modal-flight-label"].replace(':', '')}: ${translations[currentLanguage]["not-provided"]}\n`;
             }
+            // For other services, if flight number field is hidden, don't include it in the message at all.
+
 
             if (hotelName) {
                 message += `${translations[currentLanguage]["modal-hotel-label"].replace(':', '')}: ${hotelName}\n`;
             } else {
-                message += `${translations[currentLanguage]["modal-hotel-label"].replace(':', '')}: ${translations[currentLanguage]["not-provided"]} (or N/A for tours)\n`;
+                message += `${translations[currentLanguage]["modal-hotel-label"].replace(':', '')}: ${translations[currentLanguage]["not-provided"]}\n`;
             }
 
             if (specialRequests) {
@@ -1099,58 +1271,44 @@
                 message += `${translations[currentLanguage]["modal-requests-label"].replace(':', '')}: ${translations[currentLanguage]["not-provided"]}\n`;
             }
 
-            // REMOVE THIS LINE:
-            // message += `\n${translations[currentLanguage]["modal-thank-you-message"]}`; // Remove this line
-
             const encodedMessage = encodeURIComponent(message);
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-            window.open(whatsappUrl, '_blank'); // Open WhatsApp in a new tab
+            window.open(whatsappUrl, '_blank');
 
-            // *** YENİ EKLENECEK KISIM: KULLANICIYA ONAY MESAJI GÖSTERME ***
-            // Modal içeriğini değiştirebiliriz
-            const modalContent = document.querySelector('.modal-content');
-            modalContent.innerHTML = `
-                <span class="close-button">&times;</span>
-                <h3 data-lang-key="modal-heading">${translations[currentLanguage]["modal-heading"]}</h3>
-                <p style="text-align: center; font-size: 1.2rem; color: ${getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim()};">${translations[currentLanguage]["modal-thank-you-message"]}</p>
-                <p style="text-align: center; margin-top: 20px;">
-                    <a href="${whatsappUrl}" target="_blank" class="button" style="background-color: #25D366; color: white;">
-                        <i class="fab fa-whatsapp"></i> WhatsApp'a Git
-                    </a>
-                </p>
-            `;
-            // Close button listener'ı tekrar atamak gerekebilir çünkü innerHTML tüm içeriği siler
-            // Veya daha iyisi, formun kendisini gizleyip bir onay div'i gösterebiliriz.
-
-            // Mevcut modal HTML yapısını bozmadan, sadece formu gizleyip bir onay div'i göstermek daha iyi olur:
+            // Formu gizle ve yerine onay mesajını göster
             const formElement = document.getElementById('bookingForm');
-            const thankYouMessageElement = document.createElement('p');
-            thankYouMessageElement.style.textAlign = 'center';
-            thankYouMessageElement.style.fontSize = '1.2rem';
-            thankYouMessageElement.style.color = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim();
+            formElement.style.display = 'none';
+            modalServiceName.style.display = 'none';
+            modalServicePrice.style.display = 'none';
+            destinationAreaGroup.style.display = 'none'; // Hide destination group as well
+
+            const modalContentDiv = document.querySelector('.modal-content');
+
+            let thankYouMessageElement = modalContentDiv.querySelector('.thank-you-message-display');
+            let whatsappContinueButton = modalContentDiv.querySelector('.whatsapp-continue-button');
+
+            if (!thankYouMessageElement) {
+                thankYouMessageElement = document.createElement('p');
+                thankYouMessageElement.className = 'thank-you-message-display';
+                thankYouMessageElement.style.textAlign = 'center';
+                thankYouMessageElement.style.fontSize = '1.2rem';
+                thankYouMessageElement.style.color = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim();
+                modalContentDiv.appendChild(thankYouMessageElement);
+            }
             thankYouMessageElement.textContent = translations[currentLanguage]["modal-thank-you-message"];
 
-            // Ek olarak, WhatsApp butonuna tekrar tıklama imkanı sunan bir buton da ekleyebiliriz:
-            const whatsappContinueButton = document.createElement('a');
+            if (!whatsappContinueButton) {
+                whatsappContinueButton = document.createElement('a');
+                whatsappContinueButton.className = 'button whatsapp-continue-button';
+                whatsappContinueButton.style.backgroundColor = '#25D366';
+                whatsappContinueButton.style.color = 'white';
+                whatsappContinueButton.style.marginTop = '20px';
+                whatsappContinueButton.target = '_blank';
+                modalContentDiv.appendChild(whatsappContinueButton);
+            }
             whatsappContinueButton.href = whatsappUrl;
-            whatsappContinueButton.target = '_blank';
-            whatsappContinueButton.className = 'button';
-            whatsappContinueButton.style.backgroundColor = '#25D366'; // WhatsApp yeşili
-            whatsappContinueButton.style.color = 'white';
-            whatsappContinueButton.style.marginTop = '20px';
             whatsappContinueButton.innerHTML = `<i class="fab fa-whatsapp"></i> ${translations[currentLanguage]["contact-whatsapp-button"]}`;
 
-
-            // Eski formu gizle, yeni mesajı ve butonu göster
-            formElement.style.display = 'none';
-            modalServiceName.style.display = 'none'; // Servis adı da gizlenebilir
-            const modalContentDiv = document.querySelector('.modal-content');
-            modalContentDiv.appendChild(thankYouMessageElement);
-            modalContentDiv.appendChild(whatsappContinueButton);
-
-
-            //hideModal(); // Hide the modal after sending the message (veya kullanıcı manuel kapatana kadar açık kalsın)
-            // YUKARIDAKİ HİDEMODAL'I YORUM SATIRINA ALIN, KULLANICI MESAJI GÖNDERDİĞİNDEN EMİN OLSUN
         });
     </script>
 </body>
