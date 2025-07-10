@@ -1054,6 +1054,7 @@
         });
 
         // New: Event listener for the modal's booking form submission
+        // New: Event listener for the modal's booking form submission
         bookingForm.addEventListener('submit', (event) => {
             event.preventDefault(); // Stop the form from submitting normally
 
@@ -1072,7 +1073,7 @@
             const hotelName = hotelNameInput.value.trim();
             const specialRequests = specialRequestsInput.value.trim();
 
-            // Construct the detailed WhatsApp message
+            // Construct the detailed WhatsApp message - THIS IS THE PART TO CHANGE
             let message = `Hello, I would like to book the "${selectedServiceFullText}" service.\n\n`;
             message += "--- Booking Details ---\n";
             message += `${translations[currentLanguage]["modal-date-label"].replace(':', '')}: ${bookingDate || translations[currentLanguage]["not-provided"]}\n`;
@@ -1098,14 +1099,58 @@
                 message += `${translations[currentLanguage]["modal-requests-label"].replace(':', '')}: ${translations[currentLanguage]["not-provided"]}\n`;
             }
 
-            // Using the new "modal-thank-you-message" key
-            message += `\n${translations[currentLanguage]["modal-thank-you-message"]}`;
+            // REMOVE THIS LINE:
+            // message += `\n${translations[currentLanguage]["modal-thank-you-message"]}`; // Remove this line
 
             const encodedMessage = encodeURIComponent(message);
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
             window.open(whatsappUrl, '_blank'); // Open WhatsApp in a new tab
 
-            hideModal(); // Hide the modal after sending the message
+            // *** YENİ EKLENECEK KISIM: KULLANICIYA ONAY MESAJI GÖSTERME ***
+            // Modal içeriğini değiştirebiliriz
+            const modalContent = document.querySelector('.modal-content');
+            modalContent.innerHTML = `
+                <span class="close-button">&times;</span>
+                <h3 data-lang-key="modal-heading">${translations[currentLanguage]["modal-heading"]}</h3>
+                <p style="text-align: center; font-size: 1.2rem; color: ${getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim()};">${translations[currentLanguage]["modal-thank-you-message"]}</p>
+                <p style="text-align: center; margin-top: 20px;">
+                    <a href="${whatsappUrl}" target="_blank" class="button" style="background-color: #25D366; color: white;">
+                        <i class="fab fa-whatsapp"></i> WhatsApp'a Git
+                    </a>
+                </p>
+            `;
+            // Close button listener'ı tekrar atamak gerekebilir çünkü innerHTML tüm içeriği siler
+            // Veya daha iyisi, formun kendisini gizleyip bir onay div'i gösterebiliriz.
+
+            // Mevcut modal HTML yapısını bozmadan, sadece formu gizleyip bir onay div'i göstermek daha iyi olur:
+            const formElement = document.getElementById('bookingForm');
+            const thankYouMessageElement = document.createElement('p');
+            thankYouMessageElement.style.textAlign = 'center';
+            thankYouMessageElement.style.fontSize = '1.2rem';
+            thankYouMessageElement.style.color = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim();
+            thankYouMessageElement.textContent = translations[currentLanguage]["modal-thank-you-message"];
+
+            // Ek olarak, WhatsApp butonuna tekrar tıklama imkanı sunan bir buton da ekleyebiliriz:
+            const whatsappContinueButton = document.createElement('a');
+            whatsappContinueButton.href = whatsappUrl;
+            whatsappContinueButton.target = '_blank';
+            whatsappContinueButton.className = 'button';
+            whatsappContinueButton.style.backgroundColor = '#25D366'; // WhatsApp yeşili
+            whatsappContinueButton.style.color = 'white';
+            whatsappContinueButton.style.marginTop = '20px';
+            whatsappContinueButton.innerHTML = `<i class="fab fa-whatsapp"></i> ${translations[currentLanguage]["contact-whatsapp-button"]}`;
+
+
+            // Eski formu gizle, yeni mesajı ve butonu göster
+            formElement.style.display = 'none';
+            modalServiceName.style.display = 'none'; // Servis adı da gizlenebilir
+            const modalContentDiv = document.querySelector('.modal-content');
+            modalContentDiv.appendChild(thankYouMessageElement);
+            modalContentDiv.appendChild(whatsappContinueButton);
+
+
+            //hideModal(); // Hide the modal after sending the message (veya kullanıcı manuel kapatana kadar açık kalsın)
+            // YUKARIDAKİ HİDEMODAL'I YORUM SATIRINA ALIN, KULLANICI MESAJI GÖNDERDİĞİNDEN EMİN OLSUN
         });
     </script>
 </body>
