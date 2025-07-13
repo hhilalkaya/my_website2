@@ -26,12 +26,12 @@
     <style>
         /* General Styles */
         :root {
-            --primary-color: #fdd9a0; /* A warm, inviting gold/orange */
-            --secondary-color: #2c5364; /* A deep, calming blue-green */
-            --accent-color: #e67e22; /* A complementary orange for highlights */
-            --text-color-light: #f5f5f5; /* Off-white for general text on dark background */
-            --text-color-dark: #333; /* Dark grey for text on light background (if any) */
-            --bg-dark: linear-gradient(to right, #203a43, #2c5364); /* Deep blue-green gradient */
+            --primary-color: #fdd9a0;
+            --secondary-color: #2c5364;
+            --accent-color: #e67e22;
+            --text-color-light: #f5f5f5;
+            --text-color-dark: #333;
+            --bg-dark: linear-gradient(to right, #203a43, #2c5364);
             --spacing-lg: 80px;
             --spacing-md: 40px;
             --spacing-sm: 20px;
@@ -44,7 +44,7 @@
             background: var(--bg-dark);
             color: var(--text-color-light);
             line-height: 1.6;
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-x: hidden;
         }
 
         .container {
@@ -84,18 +84,18 @@
             text-decoration: none;
             font-weight: 600;
             transition: background-color 0.3s ease, transform 0.3s ease;
-            border: none; /* Ensure button elements don't have default border */
+            border: none;
             cursor: pointer;
         }
 
         .button:hover {
-            background-color: #ffebcc; /* Lighter shade of primary */
+            background-color: #ffebcc;
             transform: translateY(-3px);
         }
 
         /* Header */
         header {
-            background: rgba(0, 0, 0, 0.4); /* Slightly transparent for hero overlay */
+            background: rgba(0, 0, 0, 0.4);
             color: var(--text-color-light);
             padding: 15px 0;
             position: fixed;
@@ -112,22 +112,22 @@
         }
 
         .logo {
-            display: flex; /* Make it a flex container */
-            align-items: center; /* Vertically align items */
-            gap: 10px; /* Space between logo and name */
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .logo .small-logo {
-            height: 50px; /* Adjust logo image size */
+            height: 50px;
             width: auto;
         }
 
         .logo .company-name {
-            font-family: 'Playfair Display', serif; /* Use your main heading font */
-            font-size: 1.8rem; /* Adjust size as needed */
-            color: var(--primary-color); /* Use your primary color */
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
             font-weight: 700;
-            white-space: nowrap; /* Prevent wrapping */
+            white-space: nowrap;
         }
 
         .nav-links {
@@ -170,7 +170,7 @@
         }
 
         .hamburger {
-            display: none; /* Hidden on desktop */
+            display: none;
             font-size: 1.8rem;
             cursor: pointer;
             color: var(--primary-color);
@@ -178,7 +178,6 @@
 
         /* Hero Section */
         #hero {
-            /* Updated: Using a placeholder image for now, replace with your actual image path */
             background: url('images/hero-image.jpg') no-repeat center center/cover;
             height: 80vh;
             display: flex;
@@ -196,7 +195,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+            background: rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
 
@@ -218,26 +217,26 @@
             color: #eee;
         }
 
-        /* Image Gallery Section - Modified for 4 images side-by-side */
+        /* Image Gallery Section - Improved Mobile */
         #image-gallery {
-            padding: var(--spacing-lg) 0; /* Enlarged padding */
-            background: rgba(255, 255, 255, 0.05); /* Slightly lighter background */
+            padding: var(--spacing-lg) 0;
+            background: rgba(255, 255, 255, 0.05);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .gallery-grid {
-            display: flex;
-            flex-wrap: wrap; /* Allow images to wrap to the next line */
-            justify-content: center;
-            gap: var(--spacing-md); /* Increased space between images */
-            margin-top: var(--spacing-lg); /* Increased margin top */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+            justify-items: center;
         }
 
         .gallery-item {
-            flex: 0 0 calc(25% - (var(--spacing-md) * 3 / 4)); /* Adjusted for 4 columns with gap */
-            max-width: calc(25% - (var(--spacing-md) * 3 / 4)); /* Adjusted for 4 columns with gap */
+            width: 100%;
+            max-width: 350px;
             border-radius: 10px;
-            overflow: hidden; /* Hide overflow for rounded corners */
+            overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             transition: transform 0.3s ease;
         }
@@ -247,8 +246,8 @@
         }
 
         .gallery-item img {
-            width: 100%; /* Make image fill the container */
-            height: 200px; /* Adjust height to a suitable size, original 200px is fine */
+            width: 100%;
+            height: 250px;
             object-fit: cover;
             display: block;
             border-radius: 10px;
@@ -256,7 +255,7 @@
 
         /* Services Section */
         .service-grid {
-           display: grid;
+            display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: var(--spacing-md);
             max-width: fit-content;
@@ -264,7 +263,7 @@
         }
 
         .service-card {
-            background-color: rgba(255, 255, 255, 0.08); /* Semi-transparent white */
+            background-color: rgba(255, 255, 255, 0.08);
             border-radius: 10px;
             padding: var(--spacing-sm);
             text-align: center;
@@ -276,8 +275,6 @@
             transform: translateY(-5px);
             background-color: rgba(255, 255, 255, 0.15);
         }
-
-        /* Removed .service-card .service-icon and .service-card .service-image as they are no longer applicable */
 
         .service-card h3 {
             color: var(--primary-color);
@@ -295,86 +292,77 @@
             margin-top: 10px;
         }
 
-        /* Testimonials Section */
-        #testimonials {
+        /* References Section - Improved Mobile */
+        #references {
             background: rgba(255, 255, 255, 0.05);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .testimonials-carousel-wrapper {
-            padding: 0 var(--spacing-sm);
+        .references-carousel-wrapper {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .testimonials-grid {
+        .references-grid {
             display: flex;
-            overflow-x: hidden; /* Hide overflow to create carousel effect */
-            scroll-behavior: smooth; /* Smooth scrolling */
-            -webkit-overflow-scrolling: touch; /* Enable momentum scrolling on iOS */
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
             gap: var(--spacing-md);
             margin-top: var(--spacing-md);
-            padding-bottom: 20px; /* space for potential scrollbar */
-            justify-content: flex-start; /* Align items to the start for scrolling */
+            padding-bottom: 20px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) transparent;
+        }
+
+        .references-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .references-grid::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .references-grid::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 10px;
         }
         
-        .testimonial-card {
+        .reference-card {
             background-color: rgba(255, 255, 255, 0.08);
             border-radius: 10px;
             padding: var(--spacing-sm);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             text-align: center;
-            flex: 0 0 calc(33.333% - var(--spacing-md) * 2 / 3); /* Display 3 cards per row */
-            min-width: 300px; /* Minimum width for card */
-            box-sizing: border-box; /* Include padding and border in element's total width and height */
-        }
-
-        .carousel-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: var(--primary-color);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            flex: 0 0 300px;
+            min-height: 180px;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            z-index: 50;
-            font-size: 1.5rem;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .carousel-arrow:hover {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-        }
-
-        .arrow-left {
-            left: 0;
-        }
-
-        .arrow-right {
-            right: 0;
-        }
-
-        .testimonial-text {
+        .reference-text {
             font-size: 1rem;
             color: #eee;
             font-style: italic;
             margin-bottom: var(--spacing-sm);
+            flex-grow: 1;
         }
 
-        .testimonial-author {
+        .reference-author {
             font-size: 0.9rem;
             color: var(--primary-color);
             font-weight: bold;
+            margin-top: auto;
         }
 
         /* About Us Section */
         #about {
-            background: rgba(255, 255, 255, 0.05); /* Slightly lighter background */
+            background: rgba(255, 255, 255, 0.05);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -432,7 +420,7 @@
 
         /* Footer */
         footer {
-            background: #1a2a3a; /* Darker blue-green */
+            background: #1a2a3a;
             color: #aaa;
             text-align: center;
             padding: 20px 0;
@@ -441,23 +429,22 @@
 
         /* Modal Styles */
         .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1000; /* Sit on top of everything */
+            display: none;
+            position: fixed;
+            z-index: 1000;
             left: 0;
             top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
-            backdrop-filter: blur(5px); /* Subtle blur effect */
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
-            /* Add display: flex; via JS when showing */
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
         }
 
         .modal-content {
-            background: linear-gradient(to right, #203a43, #2c5364); /* Matches your body background */
+            background: linear-gradient(to right, #203a43, #2c5364);
             margin: auto;
             padding: 30px;
             border-radius: 15px;
@@ -465,9 +452,9 @@
             position: relative;
             max-width: 500px;
             width: 90%;
-            animation: fadeIn 0.3s ease-out; /* Smooth fade-in */
+            animation: fadeIn 0.3s ease-out;
             color: #f5f5f5;
-            max-height: 90vh; /* Limit height to enable scrolling for long forms */
+            max-height: 90vh;
             overflow-y: auto;
         }
 
@@ -517,9 +504,9 @@
         .modal-content form input[type="time"],
         .modal-content form input[type="number"],
         .modal-content form input[type="text"],
-        .modal-content form select, /* Added for select element */
+        .modal-content form select,
         .modal-content form textarea {
-            width: calc(100% - 22px); /* Full width with padding/border consideration */
+            width: calc(100% - 22px);
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #5a7b8e;
@@ -528,32 +515,28 @@
             color: #f5f5f5;
             font-family: 'Open Sans', sans-serif;
             font-size: 1rem;
-            box-sizing: border-box; /* Ensures padding/border is included in width */
+            box-sizing: border-box;
         }
 
-        /* Specific style for select dropdown for destination points and pickup points */
         .modal-content form select#destinationArea,
         .modal-content form select#pickupArea {
             background-color: #fff;
-            color: #333; /* Dark text for readability on white background */
+            color: #333;
             border: 1px solid #ccc;
         }
 
-        /* Make options black for better visibility */
         .modal-content form select#destinationArea option,
         .modal-content form select#pickupArea option {
-            color: #000; /* Set option text to black */
+            color: #000;
         }
 
-
-        /* Style for calendar and time picker icons in webkit browsers */
         .modal-content form input[type="date"]::-webkit-calendar-picker-indicator,
         .modal-content form input[type="time"]::-webkit-calendar-picker-indicator {
-            filter: invert(1); /* Makes the calendar icon white for better visibility on dark background */
+            filter: invert(1);
         }
 
         .modal-content form input:focus,
-        .modal-content form select:focus, /* Added for select element */
+        .modal-content form select:focus,
         .modal-content form textarea:focus {
             outline: none;
             border-color: var(--primary-color);
@@ -567,23 +550,21 @@
             font-size: 1.1rem;
         }
 
-        /* NEW: Styles for Price Display */
         #modalServicePrice {
-            font-size: 1.8rem; /* Make it larger */
-            font-weight: 800; /* Make it bolder */
-            color: var(--primary-color); /* Use primary color for attention */
-            text-shadow: 0 0 5px rgba(253, 217, 160, 0.5); /* Subtle shadow for pop */
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-shadow: 0 0 5px rgba(253, 217, 160, 0.5);
         }
-
 
         /* Responsive Design */
         @media (max-width: 1024px) {
-            .testimonial-card {
-                flex: 0 0 calc(50% - var(--spacing-md) / 2); /* Display 2 cards per row */
+            .references-carousel-wrapper {
+                padding: 0 30px;
             }
-            .gallery-item {
-                flex: 1 1 calc(50% - var(--spacing-md) / 2); /* 2 per row on smaller screens */
-                max-width: calc(50% - var(--spacing-md) / 2);
+            
+            .reference-card {
+                flex: 0 0 280px;
             }
         }
 
@@ -592,12 +573,13 @@
                 display: none;
                 flex-direction: column;
                 width: 100%;
-                background: rgba(0, 0, 0, 0.8);
+                background: rgba(0, 0, 0, 0.9);
                 position: absolute;
-                top: 80px; /* Adjust based on header height */
+                top: 80px;
                 left: 0;
                 text-align: center;
                 padding: 20px 0;
+                border-radius: 0 0 10px 10px;
             }
 
             .nav-links.active {
@@ -618,10 +600,12 @@
             }
 
             .language-switcher {
-                margin-top: 10px;
+                order: 3;
                 width: 100%;
                 text-align: center;
+                margin-top: 10px;
             }
+
             .language-switcher button {
                 margin: 5px;
             }
@@ -643,64 +627,95 @@
             }
 
             .logo .company-name {
-                font-size: 1.5rem; /* Smaller size on mobile */
+                font-size: 1.4rem;
             }
 
+            /* Mobile Gallery Improvements */
             .gallery-grid {
-                flex-direction: column; /* Stack images vertically on small screens */
-                align-items: center; /* Center them */
+                grid-template-columns: 1fr;
+                gap: var(--spacing-sm);
+                padding: 0 10px;
             }
 
             .gallery-item {
-                flex: 1 1 350px;
-                max-width: 450px;
-                border-radius: 10px;
-                overflow: hidden;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                transition: transform 0.3s ease;
-            }
-
-            .gallery-item:hover {
-                transform: translateY(-5px);
+                max-width: 100%;
             }
 
             .gallery-item img {
-                width: 100px;
-                height: 280px; /* Yüksekliği artırın, örneğin 280px yapın */
-                object-fit: cover;
-                display: block;
-                border-radius: 10px;
+                height: 200px;
             }
 
-            .testimonial-card {
-                flex: 0 0 100%; /* Display 1 card per row */
+            /* Mobile References Improvements */
+            .references-carousel-wrapper {
+                padding: 0 15px;
             }
 
-            .testimonials-carousel-wrapper {
-                padding: 0 10px; /* Adjust padding for smaller screens */
+            .reference-card {
+                flex: 0 0 260px;
+                min-height: 200px;
+                padding: 15px;
             }
 
-            .carousel-arrow {
-                width: 30px;
-                height: 30px;
-                font-size: 1.2rem;
+            .reference-text {
+                font-size: 0.9rem;
+                line-height: 1.4;
             }
-       }
+
+            .reference-author {
+                font-size: 0.8rem;
+            }
+
+            /* Section padding adjustments for mobile */
+            .section-padding {
+                padding: 40px 0;
+            }
+
+            /* Modal improvements for mobile */
+            .modal-content {
+                padding: 20px;
+                margin: 20px;
+                max-height: 85vh;
+            }
+        }
 
         @media (max-width: 480px) {
             .hero-content h1 {
                 font-size: 2rem;
             }
+            
             .hero-content p {
                 font-size: 1rem;
             }
+            
             .button {
                 padding: 10px 20px;
                 font-size: 0.9rem;
             }
-            .gallery-item {
-                flex: 1 1 100%; /* 1 per row on very small screens */
-                max-width: 100%;
+
+            .logo .company-name {
+                font-size: 1.2rem;
+            }
+
+            .gallery-item img {
+                height: 180px;
+            }
+
+            .reference-card {
+                flex: 0 0 240px;
+                padding: 12px;
+            }
+
+            .references-carousel-wrapper {
+                padding: 0 10px;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .modal-content {
+                padding: 15px;
+                margin: 10px;
             }
         }
     </style>
@@ -717,7 +732,7 @@
             <nav>
                 <ul class="nav-links">
                     <li><a href="#services" data-lang-key="nav-services">Services</a></li>
-                    <li><a href="#testimonials" data-lang-key="nav-testimonials">Testimonials</a></li>
+                    <li><a href="#references" data-lang-key="nav-references">References</a></li>
                     <li><a href="#about" data-lang-key="nav-about">About Us</a></li>
                     <li><a href="#contact" data-lang-key="nav-contact">Contact</a></li>
                 </ul>
@@ -745,7 +760,7 @@
 
         <section id="image-gallery" class="section-padding">
             <div class="container">
-                <h2 data-lang-key="gallery-heading">Our Fleet </h2>
+                <h2 data-lang-key="gallery-heading">Our Fleet</h2>
                 <p class="section-description" data-lang-key="gallery-description">A glimpse into our comfortable vehicles and beautiful Antalya.</p>
                 <div class="gallery-grid">
                     <div class="gallery-item">
@@ -793,47 +808,45 @@
             </div>
         </section>
 
-        <section id="testimonials" class="section-padding">
+        <section id="references" class="section-padding">
             <div class="container">
-                <h2 data-lang-key="testimonials-heading">What Our Clients Say</h2>
-                <p class="section-description" data-lang-key="testimonials-description">Read what our satisfied customers have to share about their experiences with Attalos VIP Transfers & Tours.</p>
-                <div class="testimonials-carousel-wrapper">
-                    <div class="testimonials-grid">
-                        <div class="testimonial-card">
-                            <p class="testimonial-text" data-lang-key="testimonial1-text">"Antalya'ya yaptığımız tatilde Attalos VIP Transfer'i kullandık. Havalimanından otele ulaşımımız çok rahat ve hızlıydı. Özellikle sürücümüzün güler yüzlü olması bizi çok memnun etti. Kesinlikle tekrar tercih edeceğiz!"</p>
-                            <p class="testimonial-author" data-lang-key="testimonial1-author">- Elif ve Can D.</p>
+                <h2 data-lang-key="references-heading">Client References</h2>
+                <p class="section-description" data-lang-key="references-description">Read what our satisfied customers have to share about their experiences with Attalos VIP Transfers & Tours.</p>
+                <div class="references-carousel-wrapper">
+                    <div class="references-grid">
+                        <div class="reference-card">
+                            <p class="reference-text" data-lang-key="reference1-text">"Antalya'ya yaptığımız tatilde Attalos VIP Transfer'i kullandık. Havalimanından otele ulaşımımız çok rahat ve hızlıydı. Özellikle sürücümüzün güler yüzlü olması bizi çok memnun etti. Kesinlikle tekrar tercih edeceğiz!"</p>
+                            <p class="reference-author" data-lang-key="reference1-author">- Elif ve Can D.</p>
                         </div>
-                        <div class="testimonial-card">
-                            <p class="testimonial-text" data-lang-key="testimonial2-text">"Belek'teki golf tatilimiz için şehirlerarası transfer hizmeti aldık. Araç çok lüks ve konforluydu, yolculuk boyunca hiç yorulmadık. Teşekkürler Attalos VIP!"</p>
-                            <p class="testimonial-author" data-lang-key="testimonial2-author">- Michael S.</p>
+                        <div class="reference-card">
+                            <p class="reference-text" data-lang-key="reference2-text">"Belek'teki golf tatilimiz için şehirlerarası transfer hizmeti aldık. Araç çok lüks ve konforluydu, yolculuk boyunca hiç yorulmadık. Teşekkürler Attalos VIP!"</p>
+                            <p class="reference-author" data-lang-key="reference2-author">- Michael S.</p>
                         </div>
-                        <div class="testimonial-card">
-                            <p class="testimonial-text" data-lang-key="testimonial3-text">"Günlük tur hizmetinizle Antalya'nın tarihi ve doğal güzelliklerini keşfetme fırsatı bulduk. Rehberimiz çok bilgiliydi ve tur programı oldukça keyifliydi. Herkese tavsiye ederim."</p>
-                            <p class="testimonial-author" data-lang-key="testimonial3-author">- Svetlana K.</p>
+                        <div class="reference-card">
+                            <p class="reference-text" data-lang-key="reference3-text">"Günlük tur hizmetinizle Antalya'nın tarihi ve doğal güzelliklerini keşfetme fırsatı bulduk. Rehberimiz çok bilgiliydi ve tur programı oldukça keyifliydi. Herkese tavsiye ederim."</p>
+                            <p class="reference-author" data-lang-key="reference3-author">- Svetlana K.</p>
                         </div>
-                        <div class="testimonial-card">
-                            <p class="testimonial-text" data-lang-key="testimonial4-text">"Havalimanı transferimiz tam zamanında ve sorunsuz gerçekleşti. Şoför çok nazikti ve aracın içi tertemizdi. Gerçekten VIP bir deneyim!"</p>
-                            <p class="testimonial-author" data-lang-key="testimonial4-author">- Ayşe Y.</p>
+                        <div class="reference-card">
+                            <p class="reference-text" data-lang-key="reference4-text">"Havalimanı transferimiz tam zamanında ve sorunsuz gerçekleşti. Şoför çok nazikti ve aracın içi tertemizdi. Gerçekten VIP bir deneyim!"</p>
+                            <p class="reference-author" data-lang-key="reference4-author">- Ayşe Y.</p>
                         </div>
-                        <div class="testimonial-card">
-                            <p class="testimonial-text" data-lang-key="testimonial5-text">"Attalos VIP ile yaptığımız Alanya transferi harikaydı. Uzun yolda bile konforumuzdan ödün vermedik. Fiyatlar da sunulan hizmete göre çok uygundu."</p>
-                            <p class="testimonial-author" data-lang-key="testimonial5-author">- David L.</p>
+                        <div class="reference-card">
+                            <p class="reference-text" data-lang-key="reference5-text">"Attalos VIP ile yaptığımız Alanya transferi harikaydı. Uzun yolda bile konforumuzdan ödün vermedik. Fiyatlar da sunulan hizmete göre çok uygundu."</p>
+                            <p class="reference-author" data-lang-key="reference5-author">- David L.</p>
                         </div>
-                        <div class="testimonial-card">
-                            <p class="testimonial-text" data-lang-key="testimonial6-text">"Kemer'den havalimanına dönüş transferimizde yine Attalos VIP'i tercih ettik. Her zamanki gibi dakik ve profesyonel bir hizmet aldık. Güvenle tavsiye ederim."</p>
-                            <p class="testimonial-author" data-lang-key="testimonial6-author">- Emily R.</p>
+                        <div class="reference-card">
+                            <p class="reference-text" data-lang-key="reference6-text">"Kemer'den havalimanına dönüş transferimizde yine Attalos VIP'i tercih ettik. Her zamanki gibi dakik ve profesyonel bir hizmet aldık. Güvenle tavsiye ederim."</p>
+                            <p class="reference-author" data-lang-key="reference6-author">- Emily R.</p>
                         </div>
-                        <div class="testimonial-card">
-                            <p class="testimonial-text" data-lang-key="testimonial7-text">"Antalya şehir turumuz için Attalos VIP'i seçtik. Şoförümüz hem iyi bir rehber hem de çok deneyimliydi. Şehri en iyi şekilde gezmemizi sağladı. Çok teşekkürler!"</p>
-                            <p class="testimonial-author" data-lang-key="testimonial8-author">- Sarah B.</p>
+                        <div class="reference-card">
+                            <p class="reference-text" data-lang-key="reference7-text">"Antalya şehir turumuz için Attalos VIP'i seçtik. Şoförümüz hem iyi bir rehber hem de çok deneyimliydi. Şehri en iyi şekilde gezmemizi sağladı. Çok teşekkürler!"</p>
+                            <p class="reference-author" data-lang-key="reference8-author">- Sarah B.</p>
                         </div>
-                        <div class="testimonial-card">
-                            <p class="testimonial-text" data-lang-key="testimonial9-text">"Çocuklu bir aile olarak transferde konfor bizim için önemliydi. Attalos VIP'in araçlarında çocuk koltukları da mevcuttu ve yolculuk çok rahat geçti. Kesinlikle tavsiye ederiz."</p>
-                            <p class="testimonial-author" data-lang-key="testimonial9-author">- Mehmet A.</p>
+                        <div class="reference-card">
+                            <p class="reference-text" data-lang-key="reference9-text">"Çocuklu bir aile olarak transferde konfor bizim için önemliydi. Attalos VIP'in araçlarında çocuk koltukları da mevcuttu ve yolculuk çok rahat geçti. Kesinlikle tavsiye ederiz."</p>
+                            <p class="reference-author" data-lang-key="reference9-author">- Mehmet A.</p>
                         </div>
                     </div>
-                    <div class="carousel-arrow arrow-left"><i class="fas fa-chevron-left"></i></div>
-                    <div class="carousel-arrow arrow-right"><i class="fas fa-chevron-right"></i></div>
                 </div>
             </div>
         </section>
@@ -955,21 +968,21 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const phoneNumber = '905518421407'; // Your WhatsApp number
+            const phoneNumber = '905518421407';
             const currentYear = new Date().getFullYear();
             document.getElementById('current-year').textContent = currentYear;
 
             const navLinks = document.querySelector('.nav-links');
             const hamburger = document.querySelector('.hamburger');
             const langButtons = document.querySelectorAll('.lang-button');
-            let currentLanguage = 'en'; // Default language
+            let currentLanguage = 'en';
 
-            // Language translations
+            // Language translations - Updated with references
             const translations = {
                 en: {
                     "company-name": "Attalos VIP Transfers",
                     "nav-services": "Services",
-                    "nav-testimonials": "Testimonials",
+                    "nav-references": "References",
                     "nav-about": "About Us",
                     "nav-contact": "Contact",
                     "hero-heading": "Your Journey, Our Priority.",
@@ -987,24 +1000,24 @@
                     "service3-description": "Comfortable and safe intercity transfers across Turkey for your convenience.",
                     "service4-title": "Daily Tours & Excursions",
                     "service4-description": "Discover Antalya's beauty with our curated daily tours to popular attractions and hidden gems.",
-                    "testimonials-heading": "What Our Clients Say",
-                    "testimonials-description": "Read what our satisfied customers have to share about their experiences with Attalos VIP Transfers & Tours.",
-                    "testimonial1-text": "\"We used Attalos VIP Transfer for our holiday in Antalya. Our transfer from the airport to the hotel was very comfortable and fast. We were especially pleased with our driver's friendly demeanor. We will definitely choose them again!\"",
-                    "testimonial1-author": "- Elif and Can D.",
-                    "testimonial2-text": "\"We used the intercity transfer service for our golf holiday in Belek. The vehicle was very luxurious and comfortable, we didn't get tired at all during the journey. Thank you Attalos VIP!\"",
-                    "testimonial2-author": "- Michael S.",
-                    "testimonial3-text": "\"With your daily tour service, we had the opportunity to explore the historical and natural beauties of Antalya. Our guide was very knowledgeable and the tour program was quite enjoyable. I recommend it to everyone.\"",
-                    "testimonial3-author": "- Svetlana K.",
-                    "testimonial4-text": "\"Our airport transfer was on time and seamless. The driver was very kind and the car's interior was spotless. Truly a VIP experience!\"",
-                    "testimonial4-author": "- Ayşe Y.",
-                    "testimonial5-text": "\"Our Alanya transfer with Attalos VIP was fantastic. We didn't compromise on our comfort even on the long journey. The prices were also very reasonable for the service provided.\"",
-                    "testimonial5-author": "- David L.",
-                    "testimonial6-text": "\"Kemer'den havalimanına dönüş transferimizde yine Attalos VIP'i tercih ettik. Her zamanki gibi dakik ve profesyonel bir hizmet aldık. Güvenle tavsiye ederim.\"",
-                    "testimonial6-author": "- Emily R.",
-                    "testimonial7-text": "\"Antalya şehir turumuz için Attalos VIP'i seçtik. Şoförümüz hem iyi bir rehber hem de çok deneyimliydi. Şehri en iyi şekilde gezmemizi sağladı. Çok teşekkürler!\"",
-                    "testimonial8-author": "- Sarah B.",
-                    "testimonial9-text": "\"Çocuklu bir aile olarak transferde konfor bizim için önemliydi. Attalos VIP'in araçlarında çocuk koltukları da mevcuttu ve yolculuk çok rahat geçti. Kesinlikle tavsiye ederiz.\"",
-                    "testimonial9-author": "- Mehmet A.",
+                    "references-heading": "Client References",
+                    "references-description": "Read what our satisfied customers have to share about their experiences with Attalos VIP Transfers & Tours.",
+                    "reference1-text": "\"We used Attalos VIP Transfer for our holiday in Antalya. Our transfer from the airport to the hotel was very comfortable and fast. We were especially pleased with our driver's friendly demeanor. We will definitely choose them again!\"",
+                    "reference1-author": "- Elif and Can D.",
+                    "reference2-text": "\"We used the intercity transfer service for our golf holiday in Belek. The vehicle was very luxurious and comfortable, we didn't get tired at all during the journey. Thank you Attalos VIP!\"",
+                    "reference2-author": "- Michael S.",
+                    "reference3-text": "\"With your daily tour service, we had the opportunity to explore the historical and natural beauties of Antalya. Our guide was very knowledgeable and the tour program was quite enjoyable. I recommend it to everyone.\"",
+                    "reference3-author": "- Svetlana K.",
+                    "reference4-text": "\"Our airport transfer was on time and seamless. The driver was very kind and the car's interior was spotless. Truly a VIP experience!\"",
+                    "reference4-author": "- Ayşe Y.",
+                    "reference5-text": "\"Our Alanya transfer with Attalos VIP was fantastic. We didn't compromise on our comfort even on the long journey. The prices were also very reasonable for the service provided.\"",
+                    "reference5-author": "- David L.",
+                    "reference6-text": "\"We chose Attalos VIP again for our return transfer from Kemer to the airport. As always, we received punctual and professional service. I confidently recommend them.\"",
+                    "reference6-author": "- Emily R.",
+                    "reference7-text": "\"We chose Attalos VIP for our Antalya city tour. Our driver was both a good guide and very experienced. He enabled us to explore the city in the best way. Thank you very much!\"",
+                    "reference8-author": "- Sarah B.",
+                    "reference9-text": "\"As a family with children, comfort was important for us during the transfer. Attalos VIP's vehicles also had child seats and the journey was very comfortable. We definitely recommend them.\"",
+                    "reference9-author": "- Mehmet A.",
                     "about-heading": "About Us",
                     "about-paragraph1": "Welcome to Attalos VIP Transfers! We are a dedicated team providing high-quality, reliable, and comfortable transportation services across Antalya and surrounding regions. With years of experience, we pride ourselves on offering seamless transfers and unforgettable tour experiences for tourists and locals alike.",
                     "about-paragraph2": "Our fleet consists of modern, well-maintained vehicles, and our professional drivers are committed to ensuring your safety and satisfaction. Whether you need an airport transfer, a city-to-city ride, or a tailored daily tour, we are here to make your journey smooth and enjoyable.",
@@ -1036,13 +1049,14 @@
                     "modal-submit-button": "Send Request",
                     "footer-copyright": "Attalos VIP Transfers. All rights reserved.",
                     "price-inquire": "Price varies by tour, please inquire",
-                    "modal-select-pickup-price-prompt": "Please select a pickup area to see price", // NEW
-                    "modal-select-destination-price-prompt": "Please select a destination area to see price", // NEW
+                    "modal-select-pickup-price-prompt": "Please select a pickup area to see price",
+                    "modal-select-destination-price-prompt": "Please select a destination area to see price",
+                    "book-now-button": "Book Now"
                 },
                 tr: {
                     "company-name": "Attalos VIP Transfer",
                     "nav-services": "Hizmetler",
-                    "nav-testimonials": "Referanslar",
+                    "nav-references": "Referanslar",
                     "nav-about": "Hakkımızda",
                     "nav-contact": "İletişim",
                     "hero-heading": "Yolculuğunuz, Önceliğimiz.",
@@ -1060,24 +1074,24 @@
                     "service3-description": "Türkiye genelinde konforlu ve güvenli şehirlerarası transferler.",
                     "service4-title": "Günlük Turlar & Geziler",
                     "service4-description": "Antalya'nın güzelliklerini popüler cazibe merkezlerine ve gizli kalmış yerlere düzenlediğimiz günlük turlarla keşfedin.",
-                    "testimonials-heading": "Müşterilerimiz Ne Söylüyor",
-                    "testimonials-description": "Memnun müşterilerimizin Attalos VIP Transfer ve Turları ile ilgili deneyimlerini okuyun.",
-                    "testimonial1-text": "\"Antalya'ya yaptığımız tatilde Attalos VIP Transfer'i kullandık. Havalimanından otele ulaşımımız çok rahat ve hızlıydı. Özellikle sürücümüzün güler yüzlü olması bizi çok memnun etti. Kesinlikle tekrar tercih edeceğiz!\"",
-                    "testimonial1-author": "- Elif ve Can D.",
-                    "testimonial2-text": "\"Belek'teki golf tatilimiz için şehirlerarası transfer hizmeti aldık. Araç çok lüks ve konforluydu, yolculuk boyunca hiç yorulmadık. Teşekkürler Attalos VIP!\"",
-                    "testimonial2-author": "- Michael S.",
-                    "testimonial3-text": "\"Günlük tur hizmetinizle Antalya'nın tarihi ve doğal güzelliklerini keşfetme fırsatı bulduk. Rehberimiz çok bilgiliydi ve tur programı oldukça keyifliydi. Herkese tavsiye ederim.\"",
-                    "testimonial3-author": "- Svetlana K.",
-                    "testimonial4-text": "\"Havalimanı transferimiz tam zamanında ve sorunsuz gerçekleşti. Şoför çok nazikti ve aracın içi tertemizdi. Gerçekten VIP bir deneyim!\"",
-                    "testimonial4-author": "- Ayşe Y.",
-                    "testimonial5-text": "\"Attalos VIP ile yaptığımız Alanya transferi harikaydı. Uzun yolda bile konforumuzdan ödün vermedik. Fiyatlar da sunulan hizmete göre çok uygundu.\"",
-                    "testimonial5-author": "- David L.",
-                    "testimonial6-text": "\"Kemer'den havalimanına dönüş transferimizde yine Attalos VIP'i tercih ettik. Her zamanki gibi dakik ve profesyonel bir hizmet aldık. Güvenle tavsiye ederim.\"",
-                    "testimonial6-author": "- Emily R.",
-                    "testimonial7-text": "\"Antalya şehir turumuz için Attalos VIP'i seçtik. Şoförümüz hem iyi bir rehber hem de çok deneyimliydi. Şehri en iyi şekilde gezmemizi sağladı. Çok teşekkürler!\"",
-                    "testimonial8-author": "- Sarah B.",
-                    "testimonial9-text": "\"Çocuklu bir aile olarak transferde konfor bizim için önemliydi. Attalos VIP'in araçlarında çocuk koltukları da mevcuttu ve yolculuk çok rahat geçti. Kesinlikle tavsiye ederiz.\"",
-                    "testimonial9-author": "- Mehmet A.",
+                    "references-heading": "Müşteri Referansları",
+                    "references-description": "Memnun müşterilerimizin Attalos VIP Transfer ve Turları ile ilgili deneyimlerini okuyun.",
+                    "reference1-text": "\"Antalya'ya yaptığımız tatilde Attalos VIP Transfer'i kullandık. Havalimanından otele ulaşımımız çok rahat ve hızlıydı. Özellikle sürücümüzün güler yüzlü olması bizi çok memnun etti. Kesinlikle tekrar tercih edeceğiz!\"",
+                    "reference1-author": "- Elif ve Can D.",
+                    "reference2-text": "\"Belek'teki golf tatilimiz için şehirlerarası transfer hizmeti aldık. Araç çok lüks ve konforluydu, yolculuk boyunca hiç yorulmadık. Teşekkürler Attalos VIP!\"",
+                    "reference2-author": "- Michael S.",
+                    "reference3-text": "\"Günlük tur hizmetinizle Antalya'nın tarihi ve doğal güzelliklerini keşfetme fırsatı bulduk. Rehberimiz çok bilgiliydi ve tur programı oldukça keyifliydi. Herkese tavsiye ederim.\"",
+                    "reference3-author": "- Svetlana K.",
+                    "reference4-text": "\"Havalimanı transferimiz tam zamanında ve sorunsuz gerçekleşti. Şoför çok nazikti ve aracın içi tertemizdi. Gerçekten VIP bir deneyim!\"",
+                    "reference4-author": "- Ayşe Y.",
+                    "reference5-text": "\"Attalos VIP ile yaptığımız Alanya transferi harikaydı. Uzun yolda bile konforumuzdan ödün vermedik. Fiyatlar da sunulan hizmete göre çok uygundu.\"",
+                    "reference5-author": "- David L.",
+                    "reference6-text": "\"Kemer'den havalimanına dönüş transferimizde yine Attalos VIP'i tercih ettik. Her zamanki gibi dakik ve profesyonel bir hizmet aldık. Güvenle tavsiye ederim.\"",
+                    "reference6-author": "- Emily R.",
+                    "reference7-text": "\"Antalya şehir turumuz için Attalos VIP'i seçtik. Şoförümüz hem iyi bir rehber hem de çok deneyimliydi. Şehri en iyi şekilde gezmemizi sağladı. Çok teşekkürler!\"",
+                    "reference8-author": "- Sarah B.",
+                    "reference9-text": "\"Çocuklu bir aile olarak transferde konfor bizim için önemliydi. Attalos VIP'in araçlarında çocuk koltukları da mevcuttu ve yolculuk çok rahat geçti. Kesinlikle tavsiye ederiz.\"",
+                    "reference9-author": "- Mehmet A.",
                     "about-heading": "Hakkımızda",
                     "about-paragraph1": "Attalos VIP Transfer'e hoş geldiniz! Antalya ve çevre bölgelerde yüksek kaliteli, güvenilir ve konforlu ulaşım hizmetleri sunan özel bir ekibiz. Yılların deneyimiyle, hem turistler hem de yerel halk için sorunsuz transferler ve unutulmaz tur deneyimleri sunmaktan gurur duyuyoruz.",
                     "about-paragraph2": "Filomuz modern, bakımlı araçlardan oluşmaktadır ve profesyonel sürücülerimiz güvenliğinizi ve memnuniyetinizi sağlamaya kararlıdır. İster havalimanı transferi, ister şehirlerarası bir yolculuk, isterse size özel günlük bir tur olsun, yolculuğunuzu sorunsuz ve keyifli hale getirmek için buradayız.",
@@ -1109,13 +1123,14 @@
                     "modal-submit-button": "Talep Gönder",
                     "footer-copyright": "Attalos VIP Transferleri. Tüm hakları saklıdır.",
                     "price-inquire": "Tur fiyatları tura göre değişir, lütfen bilgi alınız",
-                    "modal-select-pickup-price-prompt": "Fiyatı görmek için lütfen alış bölgesi seçin", // NEW
-                    "modal-select-destination-price-prompt": "Fiyatı görmek için lütfen varış bölgesi seçin", // NEW
+                    "modal-select-pickup-price-prompt": "Fiyatı görmek için lütfen alış bölgesi seçin",
+                    "modal-select-destination-price-prompt": "Fiyatı görmek için lütfen varış bölgesi seçin",
+                    "book-now-button": "Şimdi Rezervasyon Yap"
                 },
                 ru: {
                     "company-name": "Attalos VIP Transfers",
                     "nav-services": "Услуги",
-                    "nav-testimonials": "Отзывы",
+                    "nav-references": "Отзывы",
                     "nav-about": "О нас",
                     "nav-contact": "Контакты",
                     "hero-heading": "Ваше Путешествие, Наш Приоритет.",
@@ -1133,24 +1148,24 @@
                     "service3-description": "Комфортные и безопасные междугородние трансферы по всей Турции для вашего удобства.",
                     "service4-title": "Ежедневные Туры и Экскурсии",
                     "service4-description": "Откройте для себя красоту Анталии с нашими тщательно подобранными ежедневными турами к популярным достопримечательностям и скрытым жемчужинам.",
-                    "testimonials-heading": "Что Говорят Наши Клиенты",
-                    "testimonials-description": "Прочитайте, что наши довольные клиенты делятся о своем опыте с Attalos VIP Transfers & Tours.",
-                    "testimonial1-text": "\"Мы воспользовались Attalos VIP Transfer для нашего отдыха в Анталии. Наш трансфер из аэропорта в отель был очень комфортным и быстрым. Нас особенно порадовала дружелюбность нашего водителя. Мы обязательно выберем их снова!\"",
-                    "testimonial1-author": "- Элиф и Джан Д.",
-                    "testimonial2-text": "\"Мы воспользовались услугой междугороднего трансфера для нашего гольф-отпуска в Белеке. Автомобиль был очень роскошным и комфортным, мы совсем не устали во время поездки. Спасибо, Attalos VIP!\"",
-                    "testimonial2-author": "- Майкл С.",
-                    "testimonial3-text": "\"С вашей услугой ежедневных туров мы смогли исследовать исторические и природные красоты Анталии. Наш гид был очень знающим, и программа тура была очень приятной. Я рекомендую это всем.\"",
-                    "testimonial3-author": "- Светлана К.",
-                    "testimonial4-text": "\"Наш трансфер из аэропорта прошел вовремя и без проблем. Водитель был очень любезен, и салон автомобиля был безупречно чистым. Действительно VIP-опыт!\"",
-                    "testimonial4-author": "- Айше Й.",
-                    "testimonial5-text": "\"Наш трансфер в Аланию с Attalos VIP был фантастическим. Мы не жертвовали комфортом даже в долгой поездке. Цены также были очень разумными для предоставляемых услуг.\"",
-                    "testimonial5-author": "- Дэвид Л.",
-                    "testimonial6-text": "\"Мы снова выбрали Attalos VIP для нашего обратного трансфера из Кемера в аэропорт. Как всегда, мы получили пунктуальное и профессиональное обслуживание. Я настоятельно рекомендую их.\"",
-                    "testimonial6-author": "- Эмили Р.",
-                    "testimonial7-text": "\"Мы выбрали Attalos VIP для нашего тура по Анталии. Наш водитель был и хорошим гидом, и очень опытным. Он позволил нам наилучшим образом исследовать город. Большое спасибо!\"",
-                    "testimonial8-author": "- Сара Б.",
-                    "testimonial9-text": "\"Как семья с детьми, комфорт был важен для нас во время трансфера. В автомобилях Attalos VIP также были детские кресла, и поездка была очень комфортной. Мы определенно рекомендуем их.\"",
-                    "testimonial9-author": "- Мехмет А.",
+                    "references-heading": "Отзывы Клиентов",
+                    "references-description": "Прочитайте, что наши довольные клиенты делятся о своем опыте с Attalos VIP Transfers & Tours.",
+                    "reference1-text": "\"Мы воспользовались Attalos VIP Transfer для нашего отдыха в Анталии. Наш трансфер из аэропорта в отель был очень комфортным и быстрым. Нас особенно порадовала дружелюбность нашего водителя. Мы обязательно выберем их снова!\"",
+                    "reference1-author": "- Элиф и Джан Д.",
+                    "reference2-text": "\"Мы воспользовались услугой междугороднего трансфера для нашего гольф-отпуска в Белеке. Автомобиль был очень роскошным и комфортным, мы совсем не устали во время поездки. Спасибо, Attalos VIP!\"",
+                    "reference2-author": "- Майкл С.",
+                    "reference3-text": "\"С вашей услугой ежедневных туров мы смогли исследовать исторические и природные красоты Анталии. Наш гид был очень знающим, и программа тура была очень приятной. Я рекомендую это всем.\"",
+                    "reference3-author": "- Светлана К.",
+                    "reference4-text": "\"Наш трансфер из аэропорта прошел вовремя и без проблем. Водитель был очень любезен, и салон автомобиля был безупречно чистым. Действительно VIP-опыт!\"",
+                    "reference4-author": "- Айше Й.",
+                    "reference5-text": "\"Наш трансфер в Аланию с Attalos VIP был фантастическим. Мы не жертвовали комфортом даже в долгой поездке. Цены также были очень разумными для предоставляемых услуг.\"",
+                    "reference5-author": "- Дэвид Л.",
+                    "reference6-text": "\"Мы снова выбрали Attalos VIP для нашего обратного трансфера из Кемера в аэропорт. Как всегда, мы получили пунктуальное и профессиональное обслуживание. Я настоятельно рекомендую их.\"",
+                    "reference6-author": "- Эмили Р.",
+                    "reference7-text": "\"Мы выбрали Attalos VIP для нашего тура по Анталии. Наш водитель был и хорошим гидом, и очень опытным. Он позволил нам наилучшим образом исследовать город. Большое спасибо!\"",
+                    "reference8-author": "- Сара Б.",
+                    "reference9-text": "\"Как семья с детьми, комфорт был важен для нас во время трансфера. В автомобилях Attalos VIP также были детские кресла, и поездка была очень комфортной. Мы определенно рекомендуем их.\"",
+                    "reference9-author": "- Мехмет А.",
                     "about-heading": "О нас",
                     "about-paragraph1": "Добро пожаловать в Attalos VIP Transfers! Мы - команда, предоставляющая высококачественные, надежные и комфортные транспортные услуги по всей Анталии и прилегающим регионам. Обладая многолетним опытом, мы гордимся тем, что предлагаем бесперебойные трансферы и незабываемые туристические впечатления как для туристов, так и для местных жителей.",
                     "about-paragraph2": "Наш автопарк состоит из современных, хорошо обслуживаемых автомобилей, а наши профессиональные водители стремятся обеспечить вашу безопасность и удовлетворение. Нужен ли вам трансфер из аэропорта, поездка из города в город или индивидуальный ежедневный тур, мы здесь, чтобы сделать ваше путешествие гладким и приятным.",
@@ -1188,7 +1203,7 @@
                 de: {
                     "company-name": "Attalos VIP Transfers",
                     "nav-services": "Dienstleistungen",
-                    "nav-testimonials": "Referenzen",
+                    "nav-references": "Referenzen",
                     "nav-about": "Über Uns",
                     "nav-contact": "Kontakt",
                     "hero-heading": "Ihre Reise, Unsere Priorität.",
@@ -1208,22 +1223,22 @@
                     "service4-description": "Entdecken Sie die Schönheit Antalyas mit unseren kuratierten täglichen Touren zu beliebten Attraktionen und versteckten Schätzen.",
                     "testimonials-heading": "Was unsere Kunden sagen",
                     "testimonials-description": "Lesen Sie, was unsere zufriedenen Kunden über ihre Erfahrungen mit Attalos VIP Transfers & Touren zu erzählen haben.",
-                    "testimonial1-text": "\"Wir haben Attalos VIP Transfer für unseren Urlaub in Antalya genutzt. Unser Transfer vom Flughafen zum Hotel war sehr komfortabel und schnell. Besonders die Freundlichkeit unseres Fahrers hat uns sehr gefallen. Wir werden sie definitiv wieder wählen!\"",
-                    "testimonial1-author": "- Elif und Can D.",
-                    "testimonial2-text": "\"Wir haben den Intercity-Transfer für unseren Golfurlaub in Belek genutzt. Das Fahrzeug war sehr luxuriös und komfortabel, wir sind während der Fahrt überhaupt nicht müde geworden. Vielen Dank Attalos VIP!\"",
-                    "testimonial2-author": "- Michael S.",
-                    "testimonial3-text": "\"Mit Ihrem täglichen Tour-Service hatten wir die Möglichkeit, die historischen und natürlichen Schönheiten Antalyas zu erkunden. Unser Reiseleiter war sehr kompetent und das Tourprogramm war sehr angenehm. Ich empfehle es jedem.\"",
-                    "testimonial3-author": "- Svetlana K.",
-                    "testimonial4-text": "\"Unser Flughafentransfer war pünktlich und reibungslos. Der Fahrer war sehr nett und das Innere des Autos war makellos sauber. Wirklich ein VIP-Erlebnis!\"",
-                    "testimonial4-author": "- Ayşe Y.",
-                    "testimonial5-text": "\"Unser Alanya-Transfer mit Attalos VIP war fantastisch. Wir haben auch auf der langen Fahrt unseren Komfort nicht eingebüßt. Die Preise waren auch sehr vernünftig für den gebotenen Service.\"",
-                    "testimonial5-author": "- David L.",
-                    "testimonial6-text": "\"Kemer'den havalimanına dönüş transferimizde wieder Attalos VIP gewählt. Wie immer erhielten wir pünktlichen und professionellen Service. Ich kann sie nur wärmstens empfehlen.\"",
+                    "reference1-text": "\"Wir haben Attalos VIP Transfer für unseren Urlaub in Antalya genutzt. Unser Transfer vom Flughafen zum Hotel war sehr komfortabel und schnell. Besonders die Freundlichkeit unseres Fahrers hat uns sehr gefallen. Wir werden sie definitiv wieder wählen!\"",
+                    "reference1-author": "- Elif und Can D.",
+                    "reference2-text": "\"Wir haben den Intercity-Transfer für unseren Golfurlaub in Belek genutzt. Das Fahrzeug war sehr luxuriös und komfortabel, wir sind während der Fahrt überhaupt nicht müde geworden. Vielen Dank Attalos VIP!\"",
+                    "reference2-author": "- Michael S.",
+                    "reference3-text": "\"Mit Ihrem täglichen Tour-Service hatten wir die Möglichkeit, die historischen und natürlichen Schönheiten Antalyas zu erkunden. Unser Reiseleiter war sehr kompetent und das Tourprogramm war sehr angenehm. Ich empfehle es jedem.\"",
+                    "reference3-author": "- Svetlana K.",
+                    "reference4-text": "\"Unser Flughafentransfer war pünktlich und reibungslos. Der Fahrer war sehr nett und das Innere des Autos war makellos sauber. Wirklich ein VIP-Erlebnis!\"",
+                    "reference4-author": "- Ayşe Y.",
+                    "reference5-text": "\"Unser Alanya-Transfer mit Attalos VIP war fantastisch. Wir haben auch auf der langen Fahrt unseren Komfort nicht eingebüßt. Die Preise waren auch sehr vernünftig für den gebotenen Service.\"",
+                    "reference5-author": "- David L.",
+                    "reference6-text": "\"Kemer'den havalimanına dönüş transferimizde wieder Attalos VIP gewählt. Wie immer erhielten wir pünktlichen und professionellen Service. Ich kann sie nur wärmstens empfehlen.\"",
                     "testimonial6-author": "- Emily R.",
-                    "testimonial7-text": "\"Antalya Stadtrundfahrt: Wir haben Attalos VIP gewählt. Unser Fahrer war sowohl ein guter Führer als auch sehr erfahren. Er ermöglichte uns, die Stadt optimal zu erkunden. Vielen Dank!\"",
+                    "reference7-text": "\"Antalya Stadtrundfahrt: Wir haben Attalos VIP gewählt. Unser Fahrer war sowohl ein guter Führer als auch sehr erfahren. Er ermöglichte uns, die Stadt optimal zu erkunden. Vielen Dank!\"",
                     "testimonial8-author": "- Sarah B.",
-                    "testimonial9-text": "\"Als Familie mit Kindern war uns Komfort beim Transfer wichtig. Die Fahrzeuge von Attalos VIP hatten auch Kindersitze und die Fahrt war sehr komfortabel. Wir empfehlen sie auf jeden Fall.\"",
-                    "testimonial9-author": "- Mehmet A.",
+                    "reference9-text": "\"Als Familie mit Kindern war uns Komfort beim Transfer wichtig. Die Fahrzeuge von Attalos VIP hatten auch Kindersitze und die Fahrt war sehr komfortabel. Wir empfehlen sie auf jeden Fall.\"",
+                    "reference9-author": "- Mehmet A.",
                     "about-heading": "Über Uns",
                     "about-paragraph1": "Willkommen bei Attalos VIP Transfers! Wir sind ein engagiertes Team, das hochwertige, zuverlässige und komfortable Transportdienstleistungen in Antalya und den umliegenden Regionen anbietet. Mit jahrelanger Erfahrung sind wir stolz darauf, nahtlose Transfers und unvergessliche Tourerlebnisse für Touristen und Einheimische gleichermaßen anzubieten.",
                     "about-paragraph2": "Unser Fuhrpark besteht aus modernen, gut gewarteten Fahrzeugen, und unsere professionellen Fahrer sind bestrebt, Ihre Sicherheit und Zufriedenheit zu gewährleisten. Egal, ob Sie einen Flughafentransfer, eine Fahrt von Stadt zu Stadt oder eine maßgeschneiderte tägliche Tour benötigen, wir sind hier, um Ihre Reise reibungslos und angenehm zu gestalten.",
