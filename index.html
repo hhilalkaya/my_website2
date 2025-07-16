@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1270,6 +1271,7 @@
                     "price-inquire": "Der Preis variiert je nach Tour, bitte anfragen",
                     "modal-select-pickup-price-prompt": "Bitte wählen Sie einen Abholbereich aus, um den Preis zu sehen", // NEW
                     "modal-select-destination-price-prompt": "Bitte wählen Sie einen Zielbereich aus, um den Preis zu sehen", // NEW
+                    "book-now-button": "Jetzt Buchen"
                 }
             };
 
@@ -1348,6 +1350,13 @@
             });
 
             function populateModal(serviceKey) {
+                // İlk olarak tüm isteğe bağlı alanların zorunluluğunu kaldır
+                pickupAreaSelect.required = false;
+                destinationAreaSelect.required = false;
+                document.getElementById('startLocation').required = false;
+                document.getElementById('endLocation').required = false;
+                document.getElementById('placesToVisit').required = false;
+
                 let serviceName = '';
                 let servicePrice = '';
                 let hideHotelAirport = true;
@@ -1373,23 +1382,28 @@
                         serviceName = translations[currentLanguage]["service1-title"];
                         hideHotelAirport = false;
                         destinationAreaField.style.display = 'block'; // Show only destination
-                        servicePrice = translations[currentLanguage]["modal-select-destination-price-prompt"]; // Prompt user to select
+                        destinationAreaSelect.required = true; // zorunlu yap
+                        servicePrice = translations[currentLanguage]["modal-select-destination-price-prompt"];
                         break;
                     case 'service2': // Hotel -> Antalya Airport Transfers (Need Pickup Area)
                         serviceName = translations[currentLanguage]["service2-title"];
                         hideHotelAirport = false;
                         pickupAreaField.style.display = 'block'; // Show only pickup
-                        servicePrice = translations[currentLanguage]["modal-select-pickup-price-prompt"]; // Prompt user to select
+                        pickupAreaSelect.required = true; // zorunlu yap
+                        servicePrice = translations[currentLanguage]["modal-select-pickup-price-prompt"];
                         break;
                     case 'service3':
                         serviceName = translations[currentLanguage]["service3-title"];
                         servicePrice = translations[currentLanguage]["price-inquire"];
                         hideIntercity = false;
+                        document.getElementById('startLocation').required = true;
+                        document.getElementById('endLocation').required = true;
                         break;
                     case 'service4':
                         serviceName = translations[currentLanguage]["service4-title"];
                         servicePrice = translations[currentLanguage]["price-inquire"];
                         hideDailyTour = false;
+                        document.getElementById('placesToVisit').required = true;
                         break;
                     default:
                         serviceName = 'Unknown Service';
@@ -1437,28 +1451,38 @@
                 const serviceKey = bookingModal.dataset.serviceKey;
                 if (serviceKey === 'service1') { // Airport to Hotel (needs destinationArea)
                     const destinationArea = document.getElementById('destinationArea').value;
-                    specificDetails = `Destination: ${destinationArea}, `;
+                    if (destinationArea && destinationArea !== 'default') {
+                        specificDetails = `Destination: ${destinationArea.charAt(0).toUpperCase() + destinationArea.slice(1).replace('-', ' ')}`;
+                    }
                 } else if (serviceKey === 'service2') { // Hotel to Airport (needs pickupArea)
                     const pickupArea = document.getElementById('pickupArea').value;
-                    specificDetails = `Pickup: ${pickupArea}, `;
+                    if (pickupArea && pickupArea !== 'default') {
+                        specificDetails = `Pickup: ${pickupArea.charAt(0).toUpperCase() + pickupArea.slice(1).replace('-', ' ')}`;
+                    }
                 } else if (serviceKey === 'service3') {
                     const startLocation = document.getElementById('startLocation').value;
                     const endLocation = document.getElementById('endLocation').value;
-                    specificDetails = `Start Location: ${startLocation}, End Location: ${endLocation}, `;
+                    if (startLocation && endLocation) {
+                        specificDetails = `Route: ${startLocation} → ${endLocation}`;
+                    }
                 } else if (serviceKey === 'service4') {
                     const placesToVisit = document.getElementById('placesToVisit').value;
-                    specificDetails = `Places to Visit: ${placesToVisit}, `;
+                    if (placesToVisit) {
+                        specificDetails = `Places to Visit: ${placesToVisit}`;
+                    }
                 }
 
-                const message = `Service: ${serviceName}%0A` +
-                                `Price: ${servicePrice}%0A` +
-                                `Date: ${bookingDate}%0A` +
-                                `Time: ${bookingTime}%0A` +
-                                `Passengers: ${passengerCount}%0A` +
-                                `${specificDetails}` +
-                                (flightNumber ? `Flight Number: ${flightNumber}%0A` : '') +
-                                (hotelName ? `Hotel Name: ${hotelName}%0A` : '') +
-                                (specialRequests ? `Special Requests: ${specialRequests}` : '');
+                const message = `TRANSFER RESERVATION REQUEST\n\n` +
+                                `Service: ${serviceName}\n` +
+                                `Price: ${servicePrice}\n` +
+                                `Date: ${bookingDate}\n` +
+                                `Time: ${bookingTime}\n` +
+                                `Passengers: ${passengerCount}\n` +
+                                `${specificDetails ? `${specificDetails}\n` : ''}` +
+                                (flightNumber ? `Flight Number: ${flightNumber}\n` : '') +
+                                (hotelName ? `Hotel Name: ${hotelName}\n` : '') +
+                                (specialRequests ? `Special Requests: ${specialRequests}\n` : '') +
+                                `\nPlease confirm this reservation. Thank you!`;
 
                 const whatsappUrl = `https://wa.me/905434902192?text=${encodeURIComponent(message)}`;
                 gtag('event', 'conversion', {'send_to': 'AW-17345230617/LlahCLGel-8aEJnu7M5A'});
@@ -1478,17 +1502,25 @@
             const arrowLeft = document.querySelector('.arrow-left');
             const arrowRight = document.querySelector('.arrow-right');
 
-            arrowRight.addEventListener('click', () => {
-                const cardWidth = testimonialsGrid.querySelector('.testimonial-card').offsetWidth;
-                const scrollAmount = cardWidth * 3 + (window.innerWidth > 768 ? 20 * 2 : 0); // 20px is var(--spacing-sm) * 2 or similar for gap
-                testimonialsGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            });
+            if (arrowRight && testimonialsGrid) {
+                arrowRight.addEventListener('click', () => {
+                    const card = testimonialsGrid.querySelector('.testimonial-card');
+                    if (!card) return;
+                    const cardWidth = card.offsetWidth;
+                    const scrollAmount = cardWidth * 3 + (window.innerWidth > 768 ? 20 * 2 : 0);
+                    testimonialsGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                });
+            }
 
-            arrowLeft.addEventListener('click', () => {
-                const cardWidth = testimonialsGrid.querySelector('.testimonial-card').offsetWidth;
-                const scrollAmount = cardWidth * 3 + (window.innerWidth > 768 ? 20 * 2 : 0); // 20px is var(--spacing-sm) * 2 or similar for gap
-                testimonialsGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            });
+            if (arrowLeft && testimonialsGrid) {
+                arrowLeft.addEventListener('click', () => {
+                    const card = testimonialsGrid.querySelector('.testimonial-card');
+                    if (!card) return;
+                    const cardWidth = card.offsetWidth;
+                    const scrollAmount = cardWidth * 3 + (window.innerWidth > 768 ? 20 * 2 : 0);
+                    testimonialsGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                });
+            }
         });
     </script>
 </body>
