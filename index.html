@@ -1461,6 +1461,7 @@
                                 (specialRequests ? `Special Requests: ${specialRequests}` : '');
 
                 const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                gtag('event', 'conversion', {'send_to': 'AW-17345230617/LlahCLGel-8aEJnu7M5A'});
                 window.open(whatsappUrl, '_blank'); // Open WhatsApp in a new tab
 
                 hideModal(); // Hide the modal after sending the message
